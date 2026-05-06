@@ -1,283 +1,261 @@
 <!doctype html>
 <html lang="id">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ClearSkin – Find Your Skin Type</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=DM+Sans:wght@300;400;500;600&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="icon" type="image/png" href="/logo_dobel.png" />
-    <link rel="stylesheet" href="src/style.css" />
-  </head>
 
-  <body>
-    <!-- NAV -->
-    <nav>
-      <div
-        class="nav-logo"
-        style="display: flex; align-items: center; gap: 8px"
-      >
-        <img
-          src="/logo_dobel.png"
-          alt="ClearSkin Logo"
-          style="height: 36px; width: auto"
-        />
-        <div>Clear<span>Skin</span></div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SkinMate – Find Your Skin Type</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=DM+Sans:wght@300;400;500;600&display=swap"
+    rel="stylesheet" />
+  <link rel="icon" type="image/png" href="/logo_dobel.png" />
+  <link rel="stylesheet" href="src/style.css" />
+</head>
+
+<body>
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo" style="display: flex; align-items: center; gap: 8px">
+      <img src="/logo_dobel.png" alt="SkinMate Logo" style="height: 36px; width: auto" />
+      <div>Skin<span>Mate</span></div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#features">Fitur</a></li>
+      <li><a href="#how">Cara Kerja</a></li>
+      <li><a href="#skin-types">Tipe Kulit</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="/auth/login" class="btn-ghost">Masuk</a>
+      <a href="/auth/register" class="btn-solid">Mulai Sekarang</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg-circle c1"></div>
+    <div class="hero-bg-circle c2"></div>
+
+    <div class="hero-content">
+      <div class="hero-tag">
+        <span class="hero-tag-dot"></span>
+        Analisis Kulit Personal
       </div>
-      <ul class="nav-links">
-        <li><a href="#features">Fitur</a></li>
-        <li><a href="#how">Cara Kerja</a></li>
-        <li><a href="#skin-types">Tipe Kulit</a></li>
-      </ul>
-      <div class="nav-cta">
-        <a href="/auth/login" class="btn-ghost">Masuk</a>
-        <a href="/auth/register" class="btn-solid">Mulai Sekarang</a>
+      <h1>Kenali Kulitmu,<br /><em>Temukan</em> Perawatan<br />yang Tepat</h1>
+      <p class="hero-desc">
+        Analisis kulitmu melalui foto dan dapatkan rekomendasi perawatan yang
+        dipersonalisasi untuk tipe kulit, dan masalah kulitmu. Mulai
+        perjalanan menuju kulit yang lebih sehat hari ini!
+      </p>
+      <div class="hero-actions">
+        <a href="/auth/register" class="btn-hero"> Cek Kondisi Kulitmu →</a>
+        <a href="#how" class="btn-hero-outline">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10" />
+            <polygon points="10 8 16 12 10 16 10 8" fill="currentColor" />
+          </svg>
+          Lihat Cara Kerja
+        </a>
       </div>
-    </nav>
-
-    <!-- HERO -->
-    <section class="hero">
-      <div class="hero-bg-circle c1"></div>
-      <div class="hero-bg-circle c2"></div>
-
-      <div class="hero-content">
-        <div class="hero-tag">
-          <span class="hero-tag-dot"></span>
-          Analisis Kulit Personal
+      <div class="hero-trust">
+        <div class="trust-avatars">
+          <span>🧴</span><span>✨</span><span>🌿</span><span>💧</span>
         </div>
-        <h1>Kenali Kulitmu,<br /><em>Temukan</em> Perawatan<br />yang Tepat</h1>
-        <p class="hero-desc">
-          Analisis kulitmu melalui foto dan dapatkan rekomendasi perawatan yang
-          dipersonalisasi untuk tipe kulit, dan masalah kulitmu. Mulai
-          perjalanan menuju kulit yang lebih sehat hari ini!
-        </p>
-        <div class="hero-actions">
-          <a href="/auth/register" class="btn-hero"> Cek Kondisi Kulitmu →</a>
-          <a href="#how" class="btn-hero-outline">
-            <svg
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-            >
-              <circle cx="12" cy="12" r="10" />
-              <polygon points="10 8 16 12 10 16 10 8" fill="currentColor" />
-            </svg>
-            Lihat Cara Kerja
-          </a>
-        </div>
-        <div class="hero-trust">
-          <div class="trust-avatars">
-            <span>🧴</span><span>✨</span><span>🌿</span><span>💧</span>
-          </div>
-          <div class="trust-text">
-            <strong>Temukan Perawatan Yang Tepat untuk Kulitmu</strong>
-            Mulai perjalanan menuju kulit yang lebih sehat
-          </div>
+        <div class="trust-text">
+          <strong>Temukan Perawatan Yang Tepat untuk Kulitmu</strong>
+          Mulai perjalanan menuju kulit yang lebih sehat
         </div>
       </div>
+    </div>
 
-      <div class="hero-visual">
-        <div class="hero-card-float">
-          <!-- Floating badges -->
-          <div class="float-badge b1">
-            <span class="badge-icon">✅</span>
-            <div class="badge-label">
-              <strong>Analisis Selesai</strong>
-              Tipe kulit terdeteksi
-            </div>
+    <div class="hero-visual">
+      <div class="hero-card-float">
+        <!-- Floating badges -->
+        <div class="float-badge b1">
+          <span class="badge-icon">✅</span>
+          <div class="badge-label">
+            <strong>Analisis Selesai</strong>
+            Tipe kulit terdeteksi
           </div>
-          <div class="float-badge b2">
-            <span class="badge-icon">🌟</span>
-            <div class="badge-label">
-              <strong>98% Akurasi</strong>
-              Berdasarkan quiz
-            </div>
+        </div>
+        <div class="float-badge b2">
+          <span class="badge-icon">🌟</span>
+          <div class="badge-label">
+            <strong>98% Akurasi</strong>
+            Berdasarkan quiz
           </div>
+        </div>
 
-          <!-- Main card -->
-          <div class="hero-card-main">
-            <h3>Apa Tipe Kulitmu?</h3>
-            <p>Pilih yang paling sesuai kondisimu</p>
-            <div class="skin-type-grid">
-              <div class="skin-chip chip-oily">🌊 Berminyak</div>
-              <div class="skin-chip chip-dry">🍂 Kering</div>
-              <div class="skin-chip chip-combo">⚖️ Kombinasi</div>
-              <div class="skin-chip chip-normal">🌿 Normal</div>
-              <div class="skin-chip chip-sensitive">🌸 Sensitif</div>
-            </div>
-            <p
-              style="
+        <!-- Main card -->
+        <div class="hero-card-main">
+          <h3>Apa Tipe Kulitmu?</h3>
+          <p>Pilih yang paling sesuai kondisimu</p>
+          <div class="skin-type-grid">
+            <div class="skin-chip chip-oily">🌊 Berminyak</div>
+            <div class="skin-chip chip-dry">🍂 Kering</div>
+            <div class="skin-chip chip-combo">⚖️ Kombinasi</div>
+            <div class="skin-chip chip-normal">🌿 Normal</div>
+            <div class="skin-chip chip-sensitive">🌸 Sensitif</div>
+          </div>
+          <p style="
                 font-size: 0.78rem;
                 color: var(--text-light);
                 margin-bottom: 8px;
-              "
-            >
-              Menganalisal profil kulitmu…
-            </p>
-            <div class="quiz-progress">
-              <div class="quiz-progress-fill"></div>
-            </div>
+              ">
+            Menganalisal profil kulitmu…
+          </p>
+          <div class="quiz-progress">
+            <div class="quiz-progress-fill"></div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- FEATURES -->
-    <section class="features" id="features">
-      <div class="section-header">
-        <span class="section-tag">Mengapa ClearSkin</span>
-        <h2>Semua yang Kamu Butuhkan<br />untuk Kulit Sehat</h2>
-        <p>
-          Dari analisis hingga rekomendasi produk, semuanya ada di satu tempat
-        </p>
-      </div>
-      <div class="features-grid">
-        <div class="feature-card">
-          <div class="feature-icon">🔍</div>
-          <h3>Analisis Kulit Akurat</h3>
-          <p>
-            Quiz berbasis dermatologi untuk mengidentifikasi tipe kulit, kondisi
-            jerawat, dan kebutuhan kulitmu secara presisi.
-          </p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">💡</div>
-          <h3>Rekomendasi Personal</h3>
-          <p>
-            Dapatkan saran produk dan rutinitas skincare yang disesuaikan khusus
-            dengan profil kulitmu, bukan rekomendasi umum.
-          </p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">📈</div>
-          <h3>Pantau Progres Kulit</h3>
-          <p>
-            Catat perkembangan kulitmu dari waktu ke waktu dan lihat bagaimana
-            rutinitas barumu memberikan perubahan nyata.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- HOW IT WORKS -->
-    <section class="how-it-works" id="how">
-      <div class="section-header">
-        <span class="section-tag">Cara Kerja</span>
-        <h2>Hanya 3 Langkah Mudah</h2>
-        <p>Proses yang simpel untuk hasil yang maksimal</p>
-      </div>
-      <div class="steps">
-        <div class="step">
-          <div class="step-num">1</div>
-          <h3>Buat Akun atau Masuk Sebagai Tamu</h3>
-          <p>
-            Daftar gratis dalam hitungan detik. Tidak perlu kartu kredit, tidak
-            ada biaya tersembunyi.
-          </p>
-        </div>
-        <div class="step">
-          <div class="step-num">2</div>
-          <h3>Masukan Foto Keadaan Kulit</h3>
-          <p>
-            Buka kamera secara langsung di aplikasi, atau ambil foto dari galeri
-          </p>
-        </div>
-        <div class="step">
-          <div class="step-num">3</div>
-          <h3>Dapatkan Hasil</h3>
-          <p>
-            Terima analisis lengkap dan rekomendasi perawatan yang
-            dipersonalisasi khusus untuk kulitmu.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- SKIN TYPES -->
-    <section class="skin-types" id="skin-types">
-      <div class="section-header">
-        <span class="section-tag">Tipe Kulit</span>
-        <h2>Kamu Termasuk yang Mana?</h2>
-        <p>
-          Setiap tipe kulit punya kebutuhan unik — kami bantu kamu menemukannya
-        </p>
-      </div>
-      <div class="skin-types-grid">
-        <div class="skin-type-card">
-          <span class="skin-emoji">🌊</span>
-          <h4>Berminyak</h4>
-          <p>Produksi sebum berlebih, pori besar, rentan komedo dan jerawat</p>
-        </div>
-        <div class="skin-type-card">
-          <span class="skin-emoji">🍂</span>
-          <h4>Kering</h4>
-          <p>
-            Kulit terasa kencang, mengelupas, dan kusam akibat kurang kelembapan
-          </p>
-        </div>
-        <div class="skin-type-card">
-          <span class="skin-emoji">⚖️</span>
-          <h4>Kombinasi</h4>
-          <p>Area T-zone berminyak namun pipi cenderung normal atau kering</p>
-        </div>
-        <div class="skin-type-card">
-          <span class="skin-emoji">🌿</span>
-          <h4>Normal</h4>
-          <p>
-            Kulit seimbang, tidak terlalu berminyak atau kering, pori minimal
-          </p>
-        </div>
-        <div class="skin-type-card">
-          <span class="skin-emoji">🌸</span>
-          <h4>Sensitif</h4>
-          <p>
-            Mudah kemerahan, iritasi, dan bereaksi terhadap bahan atau cuaca
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- CTA -->
-    <section class="cta-section">
-      <h2>
-        Siap Memulai Perjalanan<br />Menuju Kulit yang <em>Lebih Sehat</em>?
-      </h2>
+  <!-- FEATURES -->
+  <section class="features" id="features">
+    <div class="section-header">
+      <span class="section-tag">Mengapa SkinMate</span>
+      <h2>Semua yang Kamu Butuhkan<br />untuk Kulit Sehat</h2>
       <p>
-        Bergabung dengan ribuan pengguna yang sudah menemukan rutinitas terbaik
-        mereka
+        Dari analisis hingga rekomendasi produk, semuanya ada di satu tempat
       </p>
-      <a href="/auth/register" class="btn-cta">Mulai Sekarang</a>
-    </section>
-
-    <!-- FOOTER -->
-    <footer>
-      <div class="footer-inner">
-        <div
-          class="footer-logo"
-          style="display: flex; align-items: center; gap: 8px"
-        >
-          <img
-            src="/logo_dobel.png"
-            alt="ClearSkin Logo"
-            style="height: 36px; width: auto"
-          />
-          <div>Clear<span>Skin</span></div>
-        </div>
-        <ul class="footer-links">
-          <li><a href="#">Tentang Kami</a></li>
-          <li><a href="#">Kebijakan Privasi</a></li>
-          <li><a href="#">Kontak</a></li>
-          <li><a href="#">Blog</a></li>
-        </ul>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">🔍</div>
+        <h3>Analisis Kulit Akurat</h3>
+        <p>
+          Quiz berbasis dermatologi untuk mengidentifikasi tipe kulit, kondisi
+          jerawat, dan kebutuhan kulitmu secara presisi.
+        </p>
       </div>
-      <p class="footer-copy">
-        © 2025 ClearSkin. Dibuat dengan ❤️ untuk kulit sehat.
+      <div class="feature-card">
+        <div class="feature-icon">💡</div>
+        <h3>Rekomendasi Personal</h3>
+        <p>
+          Dapatkan saran produk dan rutinitas skincare yang disesuaikan khusus
+          dengan profil kulitmu, bukan rekomendasi umum.
+        </p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📈</div>
+        <h3>Pantau Progres Kulit</h3>
+        <p>
+          Catat perkembangan kulitmu dari waktu ke waktu dan lihat bagaimana
+          rutinitas barumu memberikan perubahan nyata.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how-it-works" id="how">
+    <div class="section-header">
+      <span class="section-tag">Cara Kerja</span>
+      <h2>Hanya 3 Langkah Mudah</h2>
+      <p>Proses yang simpel untuk hasil yang maksimal</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Buat Akun atau Masuk Sebagai Tamu</h3>
+        <p>
+          Daftar gratis dalam hitungan detik. Tidak perlu kartu kredit, tidak
+          ada biaya tersembunyi.
+        </p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Masukan Foto Keadaan Kulit</h3>
+        <p>
+          Buka kamera secara langsung di aplikasi, atau ambil foto dari galeri
+        </p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Dapatkan Hasil</h3>
+        <p>
+          Terima analisis lengkap dan rekomendasi perawatan yang
+          dipersonalisasi khusus untuk kulitmu.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKIN TYPES -->
+  <section class="skin-types" id="skin-types">
+    <div class="section-header">
+      <span class="section-tag">Tipe Kulit</span>
+      <h2>Kamu Termasuk yang Mana?</h2>
+      <p>
+        Setiap tipe kulit punya kebutuhan unik — kami bantu kamu menemukannya
       </p>
-    </footer>
-  </body>
+    </div>
+    <div class="skin-types-grid">
+      <div class="skin-type-card">
+        <span class="skin-emoji">🌊</span>
+        <h4>Berminyak</h4>
+        <p>Produksi sebum berlebih, pori besar, rentan komedo dan jerawat</p>
+      </div>
+      <div class="skin-type-card">
+        <span class="skin-emoji">🍂</span>
+        <h4>Kering</h4>
+        <p>
+          Kulit terasa kencang, mengelupas, dan kusam akibat kurang kelembapan
+        </p>
+      </div>
+      <div class="skin-type-card">
+        <span class="skin-emoji">⚖️</span>
+        <h4>Kombinasi</h4>
+        <p>Area T-zone berminyak namun pipi cenderung normal atau kering</p>
+      </div>
+      <div class="skin-type-card">
+        <span class="skin-emoji">🌿</span>
+        <h4>Normal</h4>
+        <p>
+          Kulit seimbang, tidak terlalu berminyak atau kering, pori minimal
+        </p>
+      </div>
+      <div class="skin-type-card">
+        <span class="skin-emoji">🌸</span>
+        <h4>Sensitif</h4>
+        <p>
+          Mudah kemerahan, iritasi, dan bereaksi terhadap bahan atau cuaca
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <h2>
+      Siap Memulai Perjalanan<br />Menuju Kulit yang <em>Lebih Sehat</em>?
+    </h2>
+    <p>
+      Bergabung dengan ribuan pengguna yang sudah menemukan rutinitas terbaik
+      mereka
+    </p>
+    <a href="/auth/register" class="btn-cta">Mulai Sekarang</a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo" style="display: flex; align-items: center; gap: 8px">
+        <img src="/logo_dobel.png" alt="SkinMate Logo" style="height: 36px; width: auto" />
+        <div>Skin<span>Mate</span></div>
+      </div>
+      <ul class="footer-links">
+        <li><a href="#">Tentang Kami</a></li>
+        <li><a href="#">Kebijakan Privasi</a></li>
+        <li><a href="#">Kontak</a></li>
+        <li><a href="#">Blog</a></li>
+      </ul>
+    </div>
+    <p class="footer-copy">
+      © 2025 SkinMate. Dibuat dengan ❤️ untuk kulit sehat.
+    </p>
+  </footer>
+</body>
+
 </html>
