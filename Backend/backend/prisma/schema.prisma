@@ -1,0 +1,28 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  // Remove the url and directUrl lines from here
+}
+
+model User {
+  id            String         @id @default(uuid())
+  email         String         @unique
+  full_name     String
+  password_hash String
+  createdAt     DateTime       @default(now())
+  analyses      SkinAnalysis[]
+}
+
+model SkinAnalysis {
+  id                    String   @id @default(uuid())
+  userId                String
+  user                  User     @relation(fields: [userId], references: [id])
+  imageUrl              String
+  status                String   @default("pending")
+  aiResultJson          Json?    
+  acneSeverityLabel     String?  
+  createdAt             DateTime @default(now())
+}
