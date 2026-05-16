@@ -41,7 +41,7 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px 6%;
+  padding: 20px 8%;
   background: rgba(245, 242, 236, 0.85);
   backdrop-filter: blur(14px);
   border-bottom: 1px solid rgba(214, 210, 196, 0.5);
@@ -49,6 +49,8 @@ nav {
 }
 
 .nav-logo {
+  display: flex;
+  align-items: center;
   font-family: 'Playfair Display', serif;
   font-size: 1.5rem;
   font-weight: 700;
@@ -62,7 +64,7 @@ nav {
 
 .nav-links {
   display: flex;
-  gap: 36px;
+  gap: 80px;
   list-style: none;
 }
 
@@ -71,7 +73,7 @@ nav {
   font-weight: 500;
   color: var(--text-mid);
   text-decoration: none;
-  letter-spacing: 0.3px;
+  letter-spacing: 1px;
   transition: color 0.2s;
 }
 

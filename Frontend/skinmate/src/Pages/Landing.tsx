@@ -1,5 +1,5 @@
-
 import '../style/Landing.css'
+import logo from '../assets/logo.png'
 
 export function Landing() {
 
@@ -8,17 +8,17 @@ export function Landing() {
       {/* NAV */}
       <nav>
         <div className="nav-logo">
-          Clear<span>Skin</span>
+          <img src={logo} alt="logo" width="22" height="25" style={{ marginRight: '5px' }} />
+          Skin<span>Mate</span>
         </div>
         <ul className="nav-links">
           <li><a href="#features">Fitur</a></li>
           <li><a href="#how">Cara Kerja</a></li>
-          <li><a href="#skin-types">Tipe Kulit</a></li>
-          <li><a href="/history">History</a></li>
         </ul>
+          <li><a href="#skin-types">Tipe Kulit</a></li>
         <div className="nav-cta">
-          <a href="/history" className="btn-ghost">History</a>
-          <a href="/scan" className="btn-solid">Scan Sekarang</a>
+          <a href="/auth/login" className="btn-ghost">Masuk</a>
+          <a href="/auth/register" className="btn-solid">Mulai Sekarang</a>
         </div>
       </nav>
 
@@ -38,10 +38,10 @@ export function Landing() {
             yang Tepat
           </h1>
           <p className="hero-desc">
-            Buka kamera atau upload foto wajah, lalu simpan hasil scan ke history untuk memantau progres kulitmu.
+            Jawab quiz singkat dan dapatkan rekomendasi skincare yang dipersonalisasi sesuai tipe kulit dan kondisi jerawatmu.
           </p>
           <div className="hero-actions">
-            <a href="/scan" className="btn-hero">Buka Kamera Scan →</a>
+            <a href="/auth/register" className="btn-hero">Mulai Quiz Gratis →</a>
             <a href="#how" className="btn-hero-outline">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <circle cx="12" cy="12" r="10" />
@@ -77,13 +77,13 @@ export function Landing() {
               <span className="badge-icon">🌟</span>
               <div className="badge-label">
                 <strong>98% Akurasi</strong>
-                Dari foto scan
+                Berdasarkan quiz
               </div>
             </div>
 
             <div className="hero-card-main">
-              <h3>Scan Kulitmu</h3>
-              <p>Buka kamera atau upload foto</p>
+              <h3>Apa Tipe Kulitmu?</h3>
+              <p>Pilih yang paling sesuai kondisimu</p>
               <div className="skin-type-grid">
                 <div className="skin-chip chip-oily">🌊 Berminyak</div>
                 <div className="skin-chip chip-dry">🍂 Kering</div>
@@ -103,7 +103,7 @@ export function Landing() {
       {/* FEATURES */}
       <section className="features" id="features">
         <div className="section-header">
-          <span className="section-tag">Mengapa ClearSkin</span>
+          <span className="section-tag">Mengapa Skinmate</span>
           <h2>
             Semua yang Kamu Butuhkan<br />
             untuk Kulit Sehat
@@ -114,7 +114,7 @@ export function Landing() {
           <div className="feature-card">
             <div className="feature-icon">🔍</div>
             <h3>Analisis Kulit Akurat</h3>
-            <p>Scan berbasis kamera/foto untuk mencatat kondisi kulit dan menyimpan progresnya ke history.</p>
+            <p>Quiz berbasis dermatologi untuk mengidentifikasi tipe kulit, kondisi jerawat, dan kebutuhan kulitmu secara presisi.</p>
           </div>
           <div className="feature-card">
             <div className="feature-icon">💡</div>
@@ -144,13 +144,13 @@ export function Landing() {
           </div>
           <div className="step">
             <div className="step-num">2</div>
-            <h3>Scan / Upload Foto</h3>
-            <p>Buka kamera langsung atau upload foto wajah dengan pencahayaan yang cukup.</p>
+            <h3>Isi Quiz Kulit</h3>
+            <p>Jawab serangkaian pertanyaan singkat tentang kondisi, kebiasaan, dan masalah kulitmu sehari-hari.</p>
           </div>
           <div className="step">
             <div className="step-num">3</div>
             <h3>Dapatkan Hasil</h3>
-            <p>Hasil scan tersimpan otomatis, lalu bisa dilihat dan dibandingkan di halaman history.</p>
+            <p>Terima analisis lengkap dan rekomendasi skincare yang dipersonalisasi khusus untuk kulitmu.</p>
           </div>
         </div>
       </section>
@@ -198,7 +198,7 @@ export function Landing() {
           Menuju Kulit yang <em>Lebih Sehat</em>?
         </h2>
         <p>Bergabung dengan ribuan pengguna yang sudah menemukan rutinitas terbaik mereka</p>
-        <a href="/scan" className="btn-cta">Scan Kulit Sekarang</a>
+        <a href="/auth/register" className="btn-cta">Mulai Quiz Gratis Sekarang</a>
       </section>
 
       {/* FOOTER */}
@@ -214,7 +214,7 @@ export function Landing() {
             <li><a href="#">Blog</a></li>
           </ul>
         </div>
-        <p className="footer-copy">© 2025 ClearSkin. Dibuat dengan ❤️ untuk kulit sehat.</p>
+        <p className="footer-copy">© 2025 Skinmate. Dibuat dengan ❤️ untuk kulit sehat.</p>
       </footer>
     </>
   );

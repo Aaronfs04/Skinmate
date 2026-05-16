@@ -1,4 +1,4 @@
-import { Landing } from '../Component/Landing.tsx'
+import { Landing } from './Landing.tsx'
 
 export default function Heropages() {
     return (
