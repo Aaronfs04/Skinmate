@@ -237,7 +237,7 @@ export function Landing() {
             <li><a href="#">Kontak</a></li>
           </ul>
         </div>
-        <p className="footer-copy">© 2025 Skinmate. Dibuat dengan ❤️ untuk kulit sehat.</p>
+        <p className="footer-copy">Hellow</p>
       </footer>
     </>
   );
