@@ -1,6 +1,5 @@
 import { useMemo, useState } from 'react';
 import '../style/HistoryPage.css';
-import logo from '../assets/logo.png';
 
 type ScanHistoryItem = {
   id: string;
@@ -67,8 +66,7 @@ export default function HistoryPage() {
     <div className="history-page">
       <nav className="history-nav">
         <a className="history-logo" href="/">
-          <img src={logo} alt="logo" width="22" height="25" style={{ marginRight: '5px' }} />
-          Skinmate
+          <span /> Skinmate
         </a>
         <div className="history-nav-actions">
           <a className="primary" href="/scan">
