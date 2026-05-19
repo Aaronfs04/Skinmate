@@ -3,8 +3,11 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  // Remove the url and directUrl lines from here
+  provider  = "postgresql"
+  // Connect to Supabase via connection pooling
+  url       = "postgresql://postgres.nddaaxrpzpmwhnirxmxq:owhfvnsk20948@aws-1-ap-southeast-1.pooler.supabase.com:6543/postgres?pgbouncer=true"
+  // Direct connection to the database. Used for migrations
+  directUrl = "postgresql://postgres.nddaaxrpzpmwhnirxmxq:owhfvnsk20948@aws-1-ap-southeast-1.pooler.supabase.com:5432/postgres"
 }
 
 model User {
@@ -13,16 +16,27 @@ model User {
   full_name     String
   password_hash String
   createdAt     DateTime       @default(now())
+  
   analyses      SkinAnalysis[]
 }
 
 model SkinAnalysis {
-  id                    String   @id @default(uuid())
-  userId                String
-  user                  User     @relation(fields: [userId], references: [id])
-  imageUrl              String
-  status                String   @default("pending")
-  aiResultJson          Json?    
-  acneSeverityLabel     String?  
-  createdAt             DateTime @default(now())
+  id                String   @id @default(uuid())
+  userId            String
+  user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  // Hasil analisis AI (Acne Type & Skin Type)
+  acneType          String?  
+  skinType          String?  
+  
+  // Data pendukung dan status dari kamera/frontend
+  imageUrl          String
+  status            String   @default("pending")
+  aiResultJson      Json?    
+  acneSeverityLabel String?  
+  
+  // Tanggal & Waktu Scan (Otomatis mencatat tanggal untuk History)
+  createdAt         DateTime @default(now()) 
+}
+  createdAt         DateTime @default(now()) // Ini otomatis jadi History / Tanggal
 }
