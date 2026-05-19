@@ -834,3 +834,31 @@ footer {
     display: none;
   }
 }
+
+/* ─── Acne Types Section ─────────────────────────────────────────────────── */
+.acne-types {
+  padding: 80px 6%;
+  background: #fff;
+}
+.acne-types-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+@media (max-width: 768px) { .acne-types-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 480px) { .acne-types-grid { grid-template-columns: 1fr; } }
+.acne-type-card {
+  background: #fafaf8;
+  border: 1px solid var(--border, #e5e3db);
+  border-radius: 20px;
+  padding: 24px 20px;
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.acne-type-card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,0.08); }
+.acne-type-card.acne-severe { background: #fff5f5; border-color: #fca5a5; }
+.acne-emoji { font-size: 2.2rem; display: block; margin-bottom: 12px; }
+.acne-type-card h4 { font-size: 1rem; font-weight: 700; color: #2b2b1f; margin: 0 0 8px; }
+.acne-type-card p { font-size: 0.83rem; color: #6b6b55; line-height: 1.6; margin: 0; }
