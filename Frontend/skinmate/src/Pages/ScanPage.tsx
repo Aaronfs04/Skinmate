@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 // di Frontend/skinmate/src/Pages/ScanPage.tsx
 import '../style/ScanPage.css';
+import logo from '../assets/logo.png';
 
 type ScanHistoryItem = {
   id: string;
@@ -151,7 +152,8 @@ export default function ScanPage() {
     <div className="scan-page">
       <nav className="scan-nav">
         <a className="scan-logo" href="/">
-          <span /> Skinmate
+          <img src={logo} alt="logo" width="22" height="25" style={{ marginRight: '5px' }} />
+          Skinmate
         </a>
         <div className="scan-nav-actions">
           <a href="/history">History</a>

@@ -14,11 +14,12 @@ export function Landing() {
         <ul className="nav-links">
           <li><a href="#features">Fitur</a></li>
           <li><a href="#how">Cara Kerja</a></li>
-        </ul>
           <li><a href="#skin-types">Tipe Kulit</a></li>
+        </ul>
+
         <div className="nav-cta">
-          <a href="/auth/login" className="btn-ghost">Masuk</a>
-          <a href="/auth/register" className="btn-solid">Mulai Sekarang</a>
+          <a href="/scan" className="btn-ghost">Masuk</a>
+          <a href="/scan" className="btn-solid">Mulai Sekarang</a>
         </div>
       </nav>
 
@@ -38,10 +39,10 @@ export function Landing() {
             yang Tepat
           </h1>
           <p className="hero-desc">
-            Jawab quiz singkat dan dapatkan rekomendasi skincare yang dipersonalisasi sesuai tipe kulit dan kondisi jerawatmu.
+            Mulai analisa dan kenali masalah yang dialami oleh kulitmu.
           </p>
           <div className="hero-actions">
-            <a href="/auth/register" className="btn-hero">Mulai Quiz Gratis →</a>
+            <a href="/scan" className="btn-hero">Mulai analisa sekarang→</a>
             <a href="#how" className="btn-hero-outline">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <circle cx="12" cy="12" r="10" />
@@ -58,8 +59,8 @@ export function Landing() {
               <span>💧</span>
             </div>
             <div className="trust-text">
-              <strong>10,000+ pengguna aktif</strong>
-              sudah menemukan rutinitas terbaik mereka
+              <strong>Jadilah pengguna pertama</strong>
+              dan temukan rutinitas terbaik untuk kulitmu
             </div>
           </div>
         </div>
@@ -198,7 +199,7 @@ export function Landing() {
           Menuju Kulit yang <em>Lebih Sehat</em>?
         </h2>
         <p>Bergabung dengan ribuan pengguna yang sudah menemukan rutinitas terbaik mereka</p>
-        <a href="/auth/register" className="btn-cta">Mulai Quiz Gratis Sekarang</a>
+        <a href="/scan" className="btn-cta">Mulai Quiz Gratis Sekarang</a>
       </section>
 
       {/* FOOTER */}
@@ -214,7 +215,7 @@ export function Landing() {
             <li><a href="#">Blog</a></li>
           </ul>
         </div>
-        <p className="footer-copy">© 2025 Skinmate. Dibuat dengan ❤️ untuk kulit sehat.</p>
+        <p className="footer-copy">© 2026 Skinmate. Dibuat dengan cinta untuk kulit sehat.</p>
       </footer>
     </>
   );
