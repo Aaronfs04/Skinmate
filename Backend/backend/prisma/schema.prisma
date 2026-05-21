@@ -38,5 +38,3 @@ model SkinAnalysis {
   // Tanggal & Waktu Scan (Otomatis mencatat tanggal untuk History)
   createdAt         DateTime @default(now()) 
 }
-  createdAt         DateTime @default(now()) // Ini otomatis jadi History / Tanggal
-}
