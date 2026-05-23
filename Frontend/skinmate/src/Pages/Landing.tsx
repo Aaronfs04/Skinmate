@@ -17,7 +17,7 @@ export function Landing() {
           <li><a href="#acne-types">Tipe Jerawat</a></li>
         </ul>
         <div className="nav-cta">
-          <a href="/auth/login" className="btn-ghost">Masuk</a>
+          <a href="/auth/register" className="btn-ghost">Daftar</a>
           <a href="/scan" className="btn-solid">Scan Sekarang</a>
         </div>
       </nav>
