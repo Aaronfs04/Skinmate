@@ -477,6 +477,7 @@ nav {
   display: block;
   color: var(--text-dark);
   font-size: 0.85rem;
+  margin-left: 20px;
 }
 
 /* ── FEATURES SECTION ── */
@@ -518,7 +519,7 @@ nav {
 
 .features-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 24px;
 }
 
@@ -627,13 +628,19 @@ nav {
 .skin-types {
   padding: 100px 6%;
   background: var(--white);
+
 }
 
 .skin-types-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  /* Membuat sistem 5 kolom yang fleksibel */
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); 
   gap: 16px;
   margin-top: 60px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1000px; 
+  justify-content: center; 
 }
 
 .skin-type-card {
@@ -642,18 +649,19 @@ nav {
   text-align: center;
   border: 1.5px solid var(--border);
   background: var(--cream);
+  cursor: default;
+  
   transition:
     transform 0.25s,
     border-color 0.25s,
     box-shadow 0.25s;
-  cursor: default;
 }
 
 .skin-type-card:hover {
-  transform: translateY(-6px);
-  border-color: var(--warm-earth);
-  box-shadow: 0 12px 36px rgba(145, 139, 107, 0.16);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
 }
+
 
 .skin-type-card .skin-emoji {
   font-size: 2rem;
@@ -746,7 +754,7 @@ nav {
 
 /* ── FOOTER ── */
 footer {
-  padding: 50px 6% 36px;
+  padding: 10px 6% 36px;
   background: var(--cream-dark);
   border-top: 1px solid var(--border);
 }

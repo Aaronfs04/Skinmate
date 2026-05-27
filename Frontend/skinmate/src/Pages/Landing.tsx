@@ -1,5 +1,6 @@
 import '../style/Landing.css'
 import logo from '../assets/logo.png'
+import githubLogo from '../assets/github_logo.png';
 
 export function Landing() {
   return (
@@ -46,7 +47,7 @@ export function Landing() {
                 <circle cx="12" cy="12" r="10" />
                 <polygon points="10 8 16 12 10 16 10 8" fill="currentColor" />
               </svg>
-              Lihat Cara Kerja
+              Look how it works
             </a>
           </div>
           <div className="hero-trust">
@@ -54,8 +55,8 @@ export function Landing() {
               <span>🧴</span><span>✨</span><span>🌿</span><span>💧</span>
             </div>
             <div className="trust-text">
-              <strong>10,000+ pengguna aktif</strong>
-              sudah menemukan rutinitas terbaik mereka
+              <strong>Be an active user</strong>
+              Find the best routine for you
             </div>
           </div>
         </div>
@@ -63,23 +64,21 @@ export function Landing() {
           <div className="hero-card-float">
             <div className="float-badge b1">
               <span className="badge-icon">✅</span>
-              <div className="badge-label"><strong>Analisis Selesai</strong>Tipe kulit terdeteksi</div>
+              <div className="badge-label"><strong> Analysis Finished</strong>aDetected Skin Type</div>
             </div>
             <div className="float-badge b2">
               <span className="badge-icon">🌟</span>
-              <div className="badge-label"><strong>98% Akurasi</strong>Hasil AI Vision</div>
+              <div className="badge-label"><strong>65%-80% accuracy</strong>AI Results</div>
             </div>
             <div className="hero-card-main">
-              <h3>Apa Tipe Kulitmu?</h3>
+              <h3>What's Your Skin type</h3>
               <p>AI mendeteksi secara otomatis dari foto</p>
               <div className="skin-type-grid">
-                <div className="skin-chip chip-oily">🌊 Berminyak</div>
-                <div className="skin-chip chip-dry">🍂 Kering</div>
-                <div className="skin-chip chip-combo">⚖️ Kombinasi</div>
+                <div className="skin-chip chip-oily">🌊 Oily</div>
                 <div className="skin-chip chip-normal">🌿 Normal</div>
-                <div className="skin-chip chip-sensitive">🌸 Sensitif</div>
+                <div className="skin-chip chip-sensitive">🍂 Dry</div>
               </div>
-              <p className="quiz-analyzing-text">Menganalisal profil kulitmu…</p>
+              <p className="quiz-analyzing-text">Analyzing your skin...</p>
               <div className="quiz-progress"><div className="quiz-progress-fill"></div></div>
             </div>
           </div>
@@ -89,51 +88,57 @@ export function Landing() {
       {/* FEATURES */}
       <section className="features" id="features">
         <div className="section-header">
-          <span className="section-tag">Mengapa Skinmate</span>
-          <h2>Semua yang Kamu Butuhkan<br />untuk Kulit Sehat</h2>
-          <p>Dari analisis hingga rekomendasi produk, semuanya ada di satu tempat</p>
+          <span className="section-tag">AI Flow</span>
+          <h2>All You Need for<br />Healthy Skin</h2>
+          <p>From analysis to product recommendations, all in one place</p>
         </div>
         <div className="features-grid">
           <div className="feature-card">
-            <div className="feature-icon">🔍</div>
-            <h3>Deteksi AI Akurat</h3>
-            <p>Teknologi computer vision untuk mengidentifikasi tipe kulit dan kondisi jerawat dari foto wajahmu secara real-time.</p>
+            <div className="feature-icon">🎯</div>
+            <h3>MediaPipe Face Alignment</h3>
+            <p>Isolates and crops the face region, automatically removing background noise to guarantee consistent input for downstream classification</p>
           </div>
           <div className="feature-card">
-            <div className="feature-icon">💡</div>
-            <h3>Rekomendasi Personal</h3>
-            <p>Dapatkan tips skincare yang disesuaikan khusus dengan profil kulitmu, bukan rekomendasi umum.</p>
+            <div className="feature-icon">🔬</div>
+            <h3>YOLOv8 Object Detection</h3>
+            <p>Scans the cropped face in real-time to pinpoint the precise location of acne lesions, mapping coordinates for bounding box overlays</p>
           </div>
           <div className="feature-card">
-            <div className="feature-icon">📈</div>
-            <h3>Pantau Progres Kulit</h3>
-            <p>Simpan history scan dan lihat perkembangan kondisi kulitmu dari waktu ke waktu.</p>
+            <div className="feature-icon">🤖</div>
+            <h3>EfficientNet-B0 Classifiers</h3>
+            <p>Dual-head inference classifies overall skin type (dry, oily, normal) and fine-grained lesion types (nodules, blackheads, papulae, pustulae, whiteheads)</p>
           </div>
+            <div className="feature-card">
+            <div className="feature-icon">🧪</div>
+            <h3>Skincare Knowledge Base</h3>
+            <p>Output clinical-grade, ingredient-focused tips detailing which active ingredients to embrace or avoid based on your metrics</p>
+          </div>
+
         </div>
       </section>
 
       {/* HOW IT WORKS */}
       <section className="how-it-works" id="how">
         <div className="section-header">
-          <span className="section-tag">Cara Kerja</span>
-          <h2>Hanya 3 Langkah Mudah</h2>
-          <p>Proses yang simpel untuk hasil yang maksimal</p>
+          <span className="section-tag">How It Works</span>
+          <h2>Just 3 Easy Steps</h2>
+          <p>A simple process for maximum results</p>
         </div>
         <div className="steps">
           <div className="step">
             <div className="step-num">1</div>
-            <h3>Upload Foto</h3>
-            <p>Ambil foto wajah atau upload dari galeri. Pastikan cahaya cukup untuk hasil terbaik.</p>
+            <h3>Upload Photo</h3>
+            <p>Take a photo of your face or upload one from your gallery. Ensure there is enough lighting for the best results</p>
           </div>
           <div className="step">
             <div className="step-num">2</div>
-            <h3>Analisis AI</h3>
-            <p>AI kami menganalisis tipe kulit, kondisi jerawat, dan tingkat keparahannya secara otomatis.</p>
+            <h3>AI Analysis</h3>
+            <p>Our AI automatically analyzes your skin type, acne conditions, and their severity levels</p>
           </div>
           <div className="step">
             <div className="step-num">3</div>
-            <h3>Dapatkan Hasil</h3>
-            <p>Terima analisis lengkap beserta tips skincare yang dipersonalisasi untuk kulitmu.</p>
+            <h3>Get The Result</h3>
+            <p>Receive a complete analysis along with a personalized skincare routine tailored to your skin</p>
           </div>
         </div>
       </section>
@@ -141,103 +146,91 @@ export function Landing() {
       {/* SKIN TYPES */}
       <section className="skin-types" id="skin-types">
         <div className="section-header">
-          <span className="section-tag">Tipe Kulit</span>
-          <h2>Kamu Termasuk yang Mana?</h2>
-          <p>Setiap tipe kulit punya kebutuhan unik — AI kami bantu mendeteksinya</p>
+          <span className="section-tag">Skin Type</span>
+          <h2>Which One Are You?</h2>
+          <p>Every skin type has unique needs — our AI helps detect them</p>
         </div>
         <div className="skin-types-grid">
           <div className="skin-type-card">
             <span className="skin-emoji">🌊</span>
-            <h4>Berminyak</h4>
-            <p>Produksi sebum berlebih, pori besar, rentan komedo dan jerawat</p>
+            <h4>Oily</h4>
+            <p>Excessive sebum production, large pores, prone to blackheads and acne</p>
           </div>
           <div className="skin-type-card">
             <span className="skin-emoji">🍂</span>
-            <h4>Kering</h4>
-            <p>Kulit terasa kencang, mengelupas, dan kusam akibat kurang kelembapan</p>
-          </div>
-          <div className="skin-type-card">
-            <span className="skin-emoji">⚖️</span>
-            <h4>Kombinasi</h4>
-            <p>Area T-zone berminyak namun pipi cenderung normal atau kering</p>
+            <h4>Dry</h4>
+            <p>Skin feels tight, peeling, and dull due to a lack of moisture</p>
           </div>
           <div className="skin-type-card">
             <span className="skin-emoji">🌿</span>
             <h4>Normal</h4>
-            <p>Kulit seimbang, tidak terlalu berminyak atau kering, pori minimal</p>
+            <p>Balanced skin, neither too oily nor dry, minimal pores</p>
           </div>
-          <div className="skin-type-card">
-            <span className="skin-emoji">🌸</span>
-            <h4>Sensitif</h4>
-            <p>Mudah kemerahan, iritasi, dan bereaksi terhadap bahan atau cuaca</p>
-          </div>
+          
         </div>
       </section>
 
       {/* ACNE TYPES - NEW SECTION */}
       <section className="acne-types" id="acne-types">
         <div className="section-header">
-          <span className="section-tag">Tipe Jerawat</span>
-          <h2>Kenali Jenis Jerawatmu</h2>
-          <p>AI kami dapat mendeteksi 6 kondisi jerawat berbeda</p>
+          <span className="section-tag">Acne Type</span>
+          <h2>Know Your Acne Type</h2>
+          <p>Our AI can identify 3 distinct acne zones</p>
         </div>
         <div className="acne-types-grid">
           <div className="acne-type-card">
             <span className="acne-emoji">✨</span>
-            <h4>Tidak Ada Jerawat</h4>
-            <p>Kulit bersih tanpa tanda peradangan atau sumbatan pori yang terlihat</p>
+            <h4>Acne-Free</h4>
+            <p>Clear skin with no visible signs of inflammation or clogged pores</p>
           </div>
           <div className="acne-type-card">
             <span className="acne-emoji">⚫</span>
-            <h4>Komedo</h4>
-            <p>Pori tersumbat tanpa peradangan. Bisa berupa komedo hitam (blackhead) atau putih (whitehead)</p>
+            <h4>Inflamed</h4>
+            <p>Signs of redness, swelling, or irritation detected. This condition often occurs when the skin barrier is compromised or reacting to active acne</p>
           </div>
           <div className="acne-type-card">
             <span className="acne-emoji">🟡</span>
-            <h4>Jerawat Ringan</h4>
-            <p>Beberapa papul atau pustul kecil yang meradang, biasanya &lt;20 lesi di wajah</p>
+            <h4>Non-Inflamed</h4>
+            <p>No signs of active redness, swelling, or irritation detected. Your skin is currently in a calm and stable state</p>
           </div>
-          <div className="acne-type-card">
-            <span className="acne-emoji">🟠</span>
-            <h4>Jerawat Sedang</h4>
-            <p>Jerawat lebih banyak dan meradang, 20–50 lesi, beberapa mulai membentuk nodul</p>
-          </div>
-          <div className="acne-type-card">
-            <span className="acne-emoji">🔴</span>
-            <h4>Jerawat Parah</h4>
-            <p>Lebih dari 50 lesi, meradang luas, risiko bekas luka permanen jika tidak ditangani</p>
-          </div>
-          <div className="acne-type-card acne-severe">
-            <span className="acne-emoji">🩸</span>
-            <h4>Kistik</h4>
-            <p>Jerawat dalam di bawah kulit, menyakitkan, dan berpotensi meninggalkan bekas — butuh penanganan dokter</p>
-          </div>
+      
         </div>
       </section>
 
       {/* CTA */}
       <section className="cta-section">
         <h2>
-          Siap Memulai Perjalanan<br />
-          Menuju Kulit yang <em>Lebih Sehat</em>?
+          Ready to Embark on Your Journey<br />
+          Toward <em>Healthier Skin</em>?
         </h2>
-        <p>Scan wajahmu sekarang dan dapatkan analisis kulit personal dari AI</p>
-        <a href="/scan" className="btn-cta">Scan Kulit Gratis Sekarang</a>
+        <p>Scan your face now and get your personalized AI skin analysis</p>
+        <a href="/scan" className="btn-cta">Scan Your Skin Now</a>
       </section>
 
       {/* FOOTER */}
       <footer>
         <div className="footer-inner">
           <div className="footer-logo">
+            <img src={logo} alt="logo" width="22" height="25" style={{ marginRight: '5px' }} />
             Skin<span>Mate</span>
           </div>
           <ul className="footer-links">
-            <li><a href="#">Tentang Kami</a></li>
-            <li><a href="#">Kebijakan Privasi</a></li>
-            <li><a href="#">Kontak</a></li>
-          </ul>
+  <li>
+    <a 
+      href="https://github.com/Aaronfs04/Skinmate" 
+      target="_blank" 
+      rel="noopener noreferrer"
+    >
+      <img 
+        src={githubLogo} 
+        width={120} 
+        height={65} 
+      />
+    </a>
+  </li>
+</ul>
         </div>
-        <p className="footer-copy">Hellow</p>
+        <p className="footer-copy">© 2026 Skinmate</p>
       </footer>
     </>
   );
