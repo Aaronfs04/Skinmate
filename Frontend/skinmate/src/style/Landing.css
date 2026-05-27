@@ -477,7 +477,8 @@ nav {
   display: block;
   color: var(--text-dark);
   font-size: 0.85rem;
-  margin-left: 20px;
+  left: 8px;
+  top:50px;
 }
 
 /* ── FEATURES SECTION ── */
@@ -754,7 +755,7 @@ nav {
 
 /* ── FOOTER ── */
 footer {
-  padding: 10px 6% 36px;
+  padding: 0px 6% 36px;
   background: var(--cream-dark);
   border-top: 1px solid var(--border);
 }

@@ -12,14 +12,14 @@ export function Landing() {
           Skin<span>Mate</span>
         </div>
         <ul className="nav-links">
-          <li><a href="#features">Fitur</a></li>
-          <li><a href="#how">Cara Kerja</a></li>
-          <li><a href="#skin-types">Tipe Kulit</a></li>
-          <li><a href="#acne-types">Tipe Jerawat</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#how">How It Works</a></li>
+          <li><a href="#skin-types">Skin Type</a></li>
+          <li><a href="#acne-types">Acne Type</a></li>
         </ul>
         <div className="nav-cta">
-          <a href="/auth/register" className="btn-ghost">Daftar</a>
-          <a href="/scan" className="btn-solid">Scan Sekarang</a>
+          <a href="/auth/register" className="btn-ghost">Register</a>
+          <a href="/scan" className="btn-solid">Scan Now</a>
         </div>
       </nav>
 
@@ -30,18 +30,17 @@ export function Landing() {
         <div className="hero-content">
           <div className="hero-tag">
             <span className="hero-tag-dot"></span>
-            Analisis Kulit Personal
+            Personal Skin Analysis
           </div>
           <h1>
-            Kenali Kulitmu,<br />
-            <em>Temukan</em> Perawatan<br />
-            yang Tepat
+            Know Your Skin<br /> Find
+            <em> The Right</em> Treatment<br />
           </h1>
           <p className="hero-desc">
-            Upload foto wajah dan dapatkan analisis tipe kulit serta kondisi jerawatmu secara instan menggunakan AI.
+            Upload a face photo and get an instant analysis of your skin type and acne condition using AI
           </p>
           <div className="hero-actions">
-            <a href="/scan" className="btn-hero">Scan Kulit Sekarang →</a>
+            <a href="/scan" className="btn-hero">Scan Your Skin Now →</a>
             <a href="#how" className="btn-hero-outline">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <circle cx="12" cy="12" r="10" />
