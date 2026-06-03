@@ -1,11 +1,10 @@
 import { useState } from "react";
-import '../style/Register.css'
-import logoImg from "../assets/logo.png"
-import BackgroundImg from "../assets/LogoBackgroundImg.png";
+import '../style/Login.css'
+import logoImg from "/src/assets/logo.png";
 import GoogleLogo from "../assets/GoogleLogo.png";
-import FacebookLogo from "../assets/FacebookLogo.png"
+import FacebookLogo from "../assets/FacebookLogo.png";
 
-const Register: React.FC = () => {
+const Login: React.FC = () => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -15,11 +14,13 @@ const Register: React.FC = () => {
   };
 
   const handleSubmit = (): void => {
-    // Handle account creation logic here
-    console.log("Creating account with:", { email, password });
+    // Handle login logic here
+    console.log("Logging in with:", { email, password });
+    // After successful login, redirect to scan page
+    window.location.href = "/scan";
   };
 
-  const EyeOffIcon: React.FC = () => (
+  const EyeOffIcon: React.FC = () => (  
     <svg
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -61,43 +62,43 @@ const Register: React.FC = () => {
   );
 
   return (
-    <div className="page-wrapper">
-      <div className="card">
+    <div className="login-page-wrapper">
+      <div className="login-card">
         {/* LEFT PANEL */}
-        <div className="left-panel">
-          <img className="logo" src={logoImg} alt="Logo" />
-          <div className="left-copy">
-            <h1>Find Your Acne and Skin Type here</h1>
-            <p>Customized. Confident. Clear.</p>
+        <div className="login-left-panel">
+          <img className="login-logo" src="/logo.png" alt="Logo" />
+          <div className="login-left-copy">
+            <h1>Welcome Back to SkinMate</h1>
+            <p>Your skin journey continues here.</p>
           </div>
           <img
-            className="hero-img"
-            src={BackgroundImg}
+            className="login-hero-img"
+            src="images/Background_percobaan.png"
             alt="Skincare products"
           />
         </div>
 
         {/* RIGHT PANEL */}
-        <div className="right-panel">
-          <h2>Create Account</h2>
+        <div className="login-right-panel">
+          <h2>Log In</h2>
 
-          <div className="social-row">
-            <button className="btn-social" type="button">
+          <div className="login-social-row">
+            <button className="login-btn-social" type="button">
               <img src={GoogleLogo} alt="Google" />
-              Sign up with Google
+              Log in with Google
             </button>
-            <button className="btn-social" type="button">
+            <button className="login-btn-social" type="button">
               <img src={FacebookLogo} alt="Facebook" />
-              Sign up with Facebook
+              Log in with Facebook
             </button>
           </div>
 
-          <div className="divider">— OR —</div>
+          <div className="login-divider">— OR —</div>
 
-          <div className="field">
+          <div className="login-field">
             <input
               type="email"
-              id="email"
+              id="login-email"
               placeholder="Email"
               value={email}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
@@ -106,10 +107,10 @@ const Register: React.FC = () => {
             />
           </div>
 
-          <div className="field">
+          <div className="login-field">
             <input
               type={showPassword ? "text" : "password"}
-              id="password"
+              id="login-password"
               placeholder="Password"
               value={password}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
@@ -117,7 +118,7 @@ const Register: React.FC = () => {
               }
             />
             <button
-              className="toggle-pw"
+              className="login-toggle-pw"
               type="button"
               onClick={togglePassword}
               aria-label="Toggle password"
@@ -126,13 +127,21 @@ const Register: React.FC = () => {
             </button>
           </div>
 
-          <button className="btn-create" type="button" onClick={handleSubmit}>
-            Create Account
+          <div className="login-options">
+            <label className="login-remember">
+              <input type="checkbox" />
+              <span>Remember me</span>
+            </label>
+            <a href="#" className="login-forgot">Forgot password?</a>
+          </div>
+
+          <button className="login-btn-submit" type="button" onClick={handleSubmit}>
+            Log In
           </button>
 
-          <div className="bottom-links">
-            Already have an account? <a href="/auth/login">Log in</a>
-            <a href="/scan" className="guest">Login as a Guest</a>
+          <div className="login-bottom-links">
+            Don't have an account? <a href="/auth/register">Register</a>
+            <a href="/scan" className="login-guest">Login as User →</a>
           </div>
         </div>
       </div>
@@ -140,4 +149,4 @@ const Register: React.FC = () => {
   );
 };
 
-export default Register;
+export default Login;

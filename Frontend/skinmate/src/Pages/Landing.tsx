@@ -8,7 +8,7 @@ export function Landing() {
       {/* NAV */}
       <nav>
         <div className="nav-logo">
-          <img src={logo} alt="logo" width="22" height="25" style={{ marginRight: '5px' }} />
+          <img src={logo} alt="logo" width="22" height="29" style={{ marginRight: '5px' }} />
           Skin<span>Mate</span>
         </div>
         <ul className="nav-links">
@@ -19,7 +19,7 @@ export function Landing() {
         </ul>
         <div className="nav-cta">
           <a href="/auth/register" className="btn-ghost">Register</a>
-          <a href="/scan" className="btn-solid">Scan Now</a>
+          <a href="/auth/register" className="btn-solid">Scan Now</a>
         </div>
       </nav>
 
@@ -40,7 +40,7 @@ export function Landing() {
             Upload a face photo and get an instant analysis of your skin type and acne condition using AI
           </p>
           <div className="hero-actions">
-            <a href="/scan" className="btn-hero">Scan Your Skin Now →</a>
+            <a href="/auth/register" className="btn-hero">Scan Your Skin Now →</a>
             <a href="#how" className="btn-hero-outline">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <circle cx="12" cy="12" r="10" />
@@ -63,7 +63,7 @@ export function Landing() {
           <div className="hero-card-float">
             <div className="float-badge b1">
               <span className="badge-icon">✅</span>
-              <div className="badge-label"><strong> Analysis Finished</strong>aDetected Skin Type</div>
+              <div className="badgea-label"><strong> Analysis Finished</strong>aDetected Skin Type</div>
             </div>
             <div className="float-badge b2">
               <span className="badge-icon">🌟</span>
@@ -203,14 +203,14 @@ export function Landing() {
           Toward <em>Healthier Skin</em>?
         </h2>
         <p>Scan your face now and get your personalized AI skin analysis</p>
-        <a href="/scan" className="btn-cta">Scan Your Skin Now</a>
+        <a href="/auth/register" className="btn-cta">Scan Your Skin Now</a>
       </section>
 
       {/* FOOTER */}
       <footer>
         <div className="footer-inner">
           <div className="footer-logo">
-            <img src={logo} alt="logo" width="22" height="25" style={{ marginRight: '5px' }} />
+            <img src={logo} alt="logo" width="22" height="29" style={{ marginRight: '5px', position: 'relative', top: '3px'}} />
             Skin<span>Mate</span>
           </div>
           <ul className="footer-links">
