@@ -63,7 +63,7 @@ export function Landing() {
           <div className="hero-card-float">
             <div className="float-badge b1">
               <span className="badge-icon">✅</span>
-              <div className="badgea-label"><strong> Analysis Finished</strong>aDetected Skin Type</div>
+              <div className="badgea-label"><strong> Skin Type Detection</strong></div>
             </div>
             <div className="float-badge b2">
               <span className="badge-icon">🌟</span>
