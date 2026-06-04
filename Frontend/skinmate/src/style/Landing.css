@@ -140,7 +140,7 @@ nav {
   min-height: 100vh;
   display: flex;
   align-items: center;
-  padding: 120px 6% 80px;
+  padding: 100px 6%;
   position: relative;
   overflow: hidden;
 }
@@ -340,7 +340,7 @@ nav {
   flex: 1;
   display: flex;
   justify-content: center;
-  align-items: flex-end;
+  align-items: center;
   position: relative;
   z-index: 2;
   min-height: 500px;
