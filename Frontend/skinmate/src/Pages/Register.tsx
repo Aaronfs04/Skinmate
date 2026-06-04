@@ -7,6 +7,7 @@ import FacebookLogo from "../assets/FacebookLogo.png"
 
 const Register: React.FC = () => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
+  const [username, setUsername] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
@@ -16,7 +17,7 @@ const Register: React.FC = () => {
 
   const handleSubmit = (): void => {
     // Handle account creation logic here
-    console.log("Creating account with:", { email, password });
+    console.log("Creating account with:", { username, email, password });
   };
 
   const EyeOffIcon: React.FC = () => (
@@ -93,6 +94,18 @@ const Register: React.FC = () => {
           </div>
 
           <div className="divider">— OR —</div>
+
+          <div className="field">
+            <input
+              type="text"
+              id="username"
+              placeholder="Username"
+              value={username}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                setUsername(e.target.value)
+              }
+            />
+          </div>
 
           <div className="field">
             <input

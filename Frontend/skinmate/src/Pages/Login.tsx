@@ -1,8 +1,9 @@
 import { useState } from "react";
 import '../style/Login.css'
-import logoImg from "/src/assets/logo.png";
+import logoImg from "../assets/logo.png"
+import BackgroundImg from "../assets/LogoBackgroundImg.png";
 import GoogleLogo from "../assets/GoogleLogo.png";
-import FacebookLogo from "../assets/FacebookLogo.png";
+import FacebookLogo from "../assets/FacebookLogo.png"
 
 const Login: React.FC = () => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
@@ -20,7 +21,7 @@ const Login: React.FC = () => {
     window.location.href = "/scan";
   };
 
-  const EyeOffIcon: React.FC = () => (  
+  const EyeOffIcon: React.FC = () => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -66,14 +67,14 @@ const Login: React.FC = () => {
       <div className="login-card">
         {/* LEFT PANEL */}
         <div className="login-left-panel">
-          <img className="login-logo" src="/logo.png" alt="Logo" />
+          <img className="login-logo" src={logoImg} alt="Logo" />
           <div className="login-left-copy">
             <h1>Welcome Back to SkinMate</h1>
             <p>Your skin journey continues here.</p>
           </div>
           <img
             className="login-hero-img"
-            src="images/Background_percobaan.png"
+            src={BackgroundImg}
             alt="Skincare products"
           />
         </div>
@@ -141,7 +142,7 @@ const Login: React.FC = () => {
 
           <div className="login-bottom-links">
             Don't have an account? <a href="/auth/register">Register</a>
-            <a href="/scan" className="login-guest">Login as User →</a>
+            <a href="/scan" className="login-guest">Login as a Guest</a>
           </div>
         </div>
       </div>
