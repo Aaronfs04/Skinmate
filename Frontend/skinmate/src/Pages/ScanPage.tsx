@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import '../style/ScanPage.css';
+import logoImg from '../assets/logo.png';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -203,7 +204,7 @@ export default function ScanPage() {
   return (
     <div className="scan-page">
       <nav className="scan-nav">
-        <a className="scan-logo" href="/"><span /> Skinmate</a>
+        <a className="scan-logo" href="/"><img src={logoImg} alt="Logo" className="scan-logo-img" /> Skinmate</a>
         <div className="scan-nav-actions">
           <a href="/history">History</a>
           <a href="/">Home</a>

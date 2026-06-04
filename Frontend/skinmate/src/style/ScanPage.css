@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@300;400;500;600&display=swap');
+
 .scan-page {
   min-height: 100vh;
   background: #f5f2ec;
@@ -19,18 +21,17 @@
 .scan-logo {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   color: #5e5e3a;
   text-decoration: none;
   font-family: 'Playfair Display', serif;
   font-weight: 700;
   font-size: 1.3rem;
 }
-.scan-logo span {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #918b6b;
+.scan-logo-img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
 }
 .scan-nav-actions {
   display: flex;

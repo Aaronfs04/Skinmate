@@ -17,8 +17,13 @@ const Login: React.FC = () => {
   const handleSubmit = (): void => {
     // Handle login logic here
     console.log("Logging in with:", { email, password });
-    // After successful login, redirect to scan page
-    window.location.href = "/scan";
+    // After successful login, redirect to scan page with smooth transition
+    const nav = (window as unknown as Record<string, unknown>).__skinmate_navigate as ((path: string) => void) | undefined;
+    if (nav) {
+      nav("/scan");
+    } else {
+      window.location.href = "/scan";
+    }
   };
 
   const EyeOffIcon: React.FC = () => (

@@ -68,7 +68,7 @@ const Register: React.FC = () => {
         <div className="left-panel">
           <img className="logo" src={logoImg} alt="Logo" />
           <div className="left-copy">
-            <h1>Find Your Acne and Skin Type here</h1>
+            <h1>Find Your Acne and Skin <br /> Type here</h1>
             <p>Customized. Confident. Clear.</p>
           </div>
           <img

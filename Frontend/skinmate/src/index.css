@@ -61,6 +61,48 @@
   background: #f5f2ec;
 }
 
+/* ── Natural Page Transition System ────────────────────────────────────────── */
+
+.page-transition-wrapper {
+  width: 100%;
+  min-height: 100svh;
+  will-change: opacity, transform;
+  transform-origin: top center;
+}
+
+/* Enter: gentle fade + subtle rise */
+.page-transition-wrapper.page-fade-in {
+  animation: naturalEnter 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Exit: quick, soft dissolve */
+.page-transition-wrapper.page-fade-out {
+  animation: naturalExit 0.22s cubic-bezier(0.4, 0, 1, 1) both;
+  pointer-events: none;
+}
+
+@keyframes naturalEnter {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 8px, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes naturalExit {
+  0% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(0, -4px, 0);
+  }
+}
+
 body {
   margin: 0;
   background: #f5f2ec;

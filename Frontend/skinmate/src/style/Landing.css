@@ -22,6 +22,11 @@
 
 html {
   scroll-behavior: smooth;
+  scrollbar-width: none; /* Firefox */
+}
+
+html::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge */
 }
 
 body {
@@ -29,6 +34,7 @@ body {
   background: var(--cream);
   color: var(--text-dark);
   overflow-x: hidden;
+  -ms-overflow-style: none; /* IE */
 }
 
 /* ── NAV ── */
@@ -344,7 +350,6 @@ nav {
 .hero-card-float {
   position: relative;
   width: 450px;
-
 }
 
 .hero-card-main {
@@ -377,6 +382,7 @@ nav {
 .skin-chip:hover {
   transform: scale(1.03);
 }
+
 .chip-oily {
   background: #e8f4e8;
   color: #3a6b3a;
@@ -455,7 +461,7 @@ nav {
 
 .float-badge.b1 {
   top: 40px;
-  right: -80px; 
+  right: -80px;
   animation-delay: 0s;
 }
 .float-badge.b2 {
@@ -477,11 +483,11 @@ nav {
 .badge-icon {
   font-size: 1.1rem;
 }
+
 .badge-label strong {
   display: block;
   color: var(--text-dark);
   font-size: 0.85rem;
- 
 }
 
 /* ── FEATURES SECTION ── */
@@ -632,19 +638,17 @@ nav {
 .skin-types {
   padding: 100px 6%;
   background: var(--white);
-
 }
 
 .skin-types-grid {
   display: grid;
-  /* Membuat sistem 5 kolom yang fleksibel */
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); 
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 16px;
   margin-top: 60px;
   margin-left: auto;
   margin-right: auto;
-  max-width: 1000px; 
-  justify-content: center; 
+  max-width: 1000px;
+  justify-content: center;
 }
 
 .skin-type-card {
@@ -654,7 +658,6 @@ nav {
   border: 1.5px solid var(--border);
   background: var(--cream);
   cursor: default;
-  
   transition:
     transform 0.25s,
     border-color 0.25s,
@@ -666,22 +669,78 @@ nav {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
 }
 
-
 .skin-type-card .skin-emoji {
   font-size: 2rem;
   margin-bottom: 14px;
   display: block;
 }
+
 .skin-type-card h4 {
   font-family: 'Playfair Display', serif;
   font-size: 1rem;
   color: var(--text-dark);
   margin-bottom: 8px;
 }
+
 .skin-type-card p {
   font-size: 0.78rem;
   color: var(--text-light);
   line-height: 1.5;
+}
+
+/* ── ACNE TYPES SECTION ── */
+.acne-types {
+  padding: 80px 6%;
+  background: var(--white);
+}
+
+.acne-types-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.acne-type-card {
+  background: #fafaf8;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 24px 20px;
+  text-align: center;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+}
+
+.acne-type-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+.acne-type-card.acne-severe {
+  background: #fff5f5;
+  border-color: #fca5a5;
+}
+
+.acne-emoji {
+  font-size: 2.2rem;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.acne-type-card h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin: 0 0 8px;
+}
+
+.acne-type-card p {
+  font-size: 0.83rem;
+  color: var(--text-mid);
+  line-height: 1.6;
+  margin: 0;
 }
 
 /* ── CTA SECTION ── */
@@ -847,30 +906,14 @@ footer {
   }
 }
 
-/* ─── Acne Types Section ─────────────────────────────────────────────────── */
-.acne-types {
-  padding: 80px 6%;
-  background: #fff;
+@media (max-width: 768px) {
+  .acne-types-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
-.acne-types-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  max-width: 900px;
-  margin: 0 auto;
+
+@media (max-width: 480px) {
+  .acne-types-grid {
+    grid-template-columns: 1fr;
+  }
 }
-@media (max-width: 768px) { .acne-types-grid { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 480px) { .acne-types-grid { grid-template-columns: 1fr; } }
-.acne-type-card {
-  background: #fafaf8;
-  border: 1px solid var(--border, #e5e3db);
-  border-radius: 20px;
-  padding: 24px 20px;
-  text-align: center;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-.acne-type-card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,0.08); }
-.acne-type-card.acne-severe { background: #fff5f5; border-color: #fca5a5; }
-.acne-emoji { font-size: 2.2rem; display: block; margin-bottom: 12px; }
-.acne-type-card h4 { font-size: 1rem; font-weight: 700; color: #2b2b1f; margin: 0 0 8px; }
-.acne-type-card p { font-size: 0.83rem; color: #6b6b55; line-height: 1.6; margin: 0; }
