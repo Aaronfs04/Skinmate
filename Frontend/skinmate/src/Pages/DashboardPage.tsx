@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import '../style/DashboardPage.css';
 import logoImg from '../assets/logo.png';
+import { getUser } from '../auth';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -19,6 +20,10 @@ type ScanHistoryItem = {
 };
 
 const STORAGE_KEY = 'skinmate_scan_history';
+
+function getInitials(name: string) {
+  return name.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2);
+}
 
 function loadHistory(): ScanHistoryItem[] {
   try {
@@ -64,117 +69,6 @@ const CONDITION_COLOR: Record<string, { bg: string; fg: string; dot: string }> =
 };
 
 
-
-// ─── Sidebar ──────────────────────────────────────────────────────────────────
-
-function Sidebar({ open, onClose }: { open: boolean; onClose: () => void }) {
-  const history = loadHistory();
-  const totalScans = history.length;
-  const avgConf =
-    totalScans > 0
-      ? Math.round(
-        history.reduce((s, h) => s + (h.confidence || 0), 0) / totalScans,
-      )
-      : 0;
-
-  const conditionCounts = history.reduce<Record<string, number>>((acc, h) => {
-    acc[h.overallCondition] = (acc[h.overallCondition] || 0) + 1;
-    return acc;
-  }, {});
-
-  const skinTypeCounts = history.reduce<Record<string, number>>((acc, h) => {
-    acc[h.skinType] = (acc[h.skinType] || 0) + 1;
-    return acc;
-  }, {});
-  const topSkin = Object.entries(skinTypeCounts).sort((a, b) => b[1] - a[1])[0];
-
-  return (
-    <>
-      <div
-        className={`db-overlay${open ? ' visible' : ''}`}
-        onClick={onClose}
-        aria-hidden="true"
-      />
-      <aside className={`db-sidebar${open ? ' open' : ''}`}>
-        {/* Head */}
-        <div className="db-sb-head">
-          <div className="db-sb-logo">
-            <img src={logoImg} alt="Logo" width="22" height="29" style={{ marginRight: '5px' }} />
-            Skin<span>Mate</span>
-          </div>
-          <button className="db-sb-close" onClick={onClose}>
-            ✕
-          </button>
-        </div>
-
-        {/* Profile */}
-        <div className="db-sb-profile">
-          <div className="db-sb-avatar">👤</div>
-          <div>
-            <strong>Pengguna</strong>
-            <span>{totalScans} scan dilakukan</span>
-          </div>
-        </div>
-
-        {/* Stats */}
-        <div className="db-sb-stats">
-          <div className="db-sb-stat">
-            <span className="stat-num">{totalScans}</span>
-            <span className="stat-label">Total Scan</span>
-          </div>
-          <div className="db-sb-stat">
-            <span className="stat-num">{avgConf}%</span>
-            <span className="stat-label">Avg. Confidence</span>
-          </div>
-          <div className="db-sb-stat">
-            <span className="stat-num">
-              {topSkin?.[0]?.split(' ')[0] ?? '-'}
-            </span>
-            <span className="stat-label">Tipe Dominan</span>
-          </div>
-        </div>
-
-        {/* Condition breakdown */}
-        <div className="db-sb-section">
-          <p className="db-sb-section-label">Kondisi Scan</p>
-          {Object.entries(conditionCounts).length === 0 ? (
-            <p className="db-sb-empty">Belum ada data scan.</p>
-          ) : (
-            Object.entries(conditionCounts).map(([cond, count]) => {
-              const col = CONDITION_COLOR[cond] ?? {
-                bg: '#f5f2ec',
-                fg: '#918b6b',
-                dot: '#918b6b',
-              };
-              return (
-                <div key={cond} className="db-sb-cond-row">
-                  <span
-                    className="db-sb-cond-dot"
-                    style={{ background: col.dot }}
-                  />
-                  <span className="db-sb-cond-name">{cond}</span>
-                  <span className="db-sb-cond-count" style={{ color: col.fg }}>
-                    {count}×
-                  </span>
-                </div>
-              );
-            })
-          )}
-        </div>
-
-        {/* Nav */}
-        <nav className="db-sb-nav">
-          <a href="/">🏠 Home</a>
-          <a href="/scan">📷 Scan</a>
-          <a href="/history">🕘 History</a>
-          <a href="/dashboard" className="active">
-            📊 Dashboard
-          </a>
-        </nav>
-      </aside>
-    </>
-  );
-}
 
 // ─── Chart: kondisi over time ──────────────────────────────────────────────────
 
@@ -250,11 +144,12 @@ function TrendChart({ history }: { history: ScanHistoryItem[] }) {
 
 export default function DashboardPage() {
   const [history, setHistory] = useState<ScanHistoryItem[]>([]);
-  const [sidebarOpen, setSidebarOpen] = useState(false);
   const [loaded, setLoaded] = useState(false);
+  const [user, setCurrentUser] = useState<{ username: string } | null>(null);
 
   useEffect(() => {
     setHistory(loadHistory());
+    setCurrentUser(getUser());
     setLoaded(true);
   }, []);
 
@@ -285,29 +180,21 @@ export default function DashboardPage() {
 
   return (
     <div className={`db-page${loaded ? ' loaded' : ''}`}>
-      <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
 
       {/* ── Nav ── */}
       <nav className="db-nav">
-        <a className="db-nav-logo" href="/">
+        <a className="db-nav-logo" href={user ? "/home" : "/"}>
           <img src={logoImg} alt="Logo" width="22" height="29" style={{ marginRight: '5px' }} />
           Skin<span>Mate</span>
         </a>
         <div className="db-nav-links">
           <a href="/scan">Scan</a>
-          <a href="/history">History</a>
           <a href="/dashboard" className="active">
             Dashboard
           </a>
-          <button
-            className="db-hamburger"
-            onClick={() => setSidebarOpen((o) => !o)}
-            aria-label="Menu"
-          >
-            <span />
-            <span />
-            <span />
-          </button>
+          <a href="/profile" className="db-nav-avatar" title="Profile">
+            <span className="nav-avatar-circle">{user ? getInitials(user.username) : '👤'}</span>
+          </a>
         </div>
       </nav>
 
