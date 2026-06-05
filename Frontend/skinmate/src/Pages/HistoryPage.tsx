@@ -1,6 +1,11 @@
-import { useMemo, useState } from 'react';
+import { useMemo, useState, useEffect } from 'react';
 import '../style/HistoryPage.css';
 import logoImg from '../assets/logo.png';
+import { getUser } from '../auth';
+
+function getInitials(name: string) {
+  return name.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2);
+}
 
 type ScanHistoryItem = {
   id: string;
@@ -36,6 +41,11 @@ function formatDate(value: string) {
 export default function HistoryPage() {
   const [history, setHistory] = useState<ScanHistoryItem[]>(loadHistory);
   const [selectedIds, setSelectedIds] = useState<string[]>([]);
+  const [user, setCurrentUser] = useState<{ username: string } | null>(null);
+
+  useEffect(() => {
+    setCurrentUser(getUser());
+  }, []);
 
   const selectedItems = useMemo(
     () => history.filter((item) => selectedIds.includes(item.id)),
@@ -66,15 +76,16 @@ export default function HistoryPage() {
   return (
     <div className="history-page">
       <nav className="history-nav">
-        <a className="history-logo" href="/">
+        <a className="history-logo" href={user ? "/home" : "/"}>
           <img src={logoImg} alt="Logo" width="22" height="29" style={{ marginRight: '5px' }} />
           Skin<span>Mate</span>
         </a>
         <div className="history-nav-actions">
-          <a className="primary" href="/scan">
-            + Scan Baru
+          <a href="/scan">Scan</a>
+          <a href="/dashboard">Dashboard</a>
+          <a href="/profile" className="history-nav-avatar" title="Profile">
+            <span className="history-avatar-circle">{user ? getInitials(user.username) : '👤'}</span>
           </a>
-          <a href="/">Home</a>
         </div>
       </nav>
 
