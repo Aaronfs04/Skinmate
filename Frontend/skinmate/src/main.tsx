@@ -4,6 +4,7 @@ import './index.css'
 import HeroPage from './Pages/HeroPage'
 import ScanPage from './Pages/ScanPage'
 import HistoryPage from './Pages/HistoryPage'
+import DashboardPage from './Pages/DashboardPage'
 import Register from './Pages/Register'
 import Login from './Pages/Login'
 
@@ -26,6 +27,7 @@ export function navigateTo(path: string) {
 function resolveRoute(path: string): React.ReactNode {
   if (path === '/scan' || path === '/app/scan') return <ScanPage />
   if (path === '/history' || path === '/app/history') return <HistoryPage />
+  if (path === '/dashboard' || path === '/app/dashboard') return <DashboardPage />
   if (path === '/auth/register' || path === '/app/auth/register') return <Register />
   if (path === '/auth/login' || path === '/app/auth/login') return <Login />
   return <HeroPage />

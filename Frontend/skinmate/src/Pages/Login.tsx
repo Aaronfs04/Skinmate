@@ -1,9 +1,9 @@
 import { useState } from "react";
 import '../style/Login.css'
-import logoImg from "../assets/logo.png"
+import logoImg from "/src/assets/logo.png";
 import BackgroundImg from "../assets/LogoBackgroundImg.png";
 import GoogleLogo from "../assets/GoogleLogo.png";
-import FacebookLogo from "../assets/FacebookLogo.png"
+import FacebookLogo from "../assets/FacebookLogo.png";
 
 const Login: React.FC = () => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
@@ -17,13 +17,8 @@ const Login: React.FC = () => {
   const handleSubmit = (): void => {
     // Handle login logic here
     console.log("Logging in with:", { email, password });
-    // After successful login, redirect to scan page with smooth transition
-    const nav = (window as unknown as Record<string, unknown>).__skinmate_navigate as ((path: string) => void) | undefined;
-    if (nav) {
-      nav("/scan");
-    } else {
-      window.location.href = "/scan";
-    }
+    // After successful login, redirect to scan page
+    window.location.href = "/scan";
   };
 
   const EyeOffIcon: React.FC = () => (

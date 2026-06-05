@@ -9,29 +9,28 @@
 .scan-nav {
   position: sticky;
   top: 0;
-  z-index: 20;
+  z-index: 100;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16px 6%;
-  background: rgba(245, 242, 236, 0.94);
-  border-bottom: 1px solid #d6d2c4;
-  backdrop-filter: blur(12px);
+  padding: 20px 8%;
+  background: rgba(245, 242, 236, 0.85);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(214, 210, 196, 0.5);
 }
 .scan-logo {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 0;
   color: #5e5e3a;
   text-decoration: none;
   font-family: 'Playfair Display', serif;
   font-weight: 700;
-  font-size: 1.3rem;
+  font-size: 1.5rem;
+  letter-spacing: -0.5px;
 }
-.scan-logo-img {
-  width: 32px;
-  height: 32px;
-  object-fit: contain;
+.scan-logo span {
+  color: #918b6b;
 }
 .scan-nav-actions {
   display: flex;

@@ -1,8 +1,11 @@
+import { useEffect } from 'react';
 import '../style/Landing.css'
 import logo from '../assets/logo.png'
 import githubLogo from '../assets/github_logo.png';
 
 export function Landing() {
+
+
   return (
     <>
       {/* NAV */}

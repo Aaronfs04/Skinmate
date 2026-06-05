@@ -204,9 +204,12 @@ export default function ScanPage() {
   return (
     <div className="scan-page">
       <nav className="scan-nav">
-        <a className="scan-logo" href="/"><img src={logoImg} alt="Logo" className="scan-logo-img" /> Skinmate</a>
+        <a className="scan-logo" href="/">
+          <img src={logoImg} alt="Logo" width="22" height="29" style={{ marginRight: '5px' }} />
+          Skin<span>Mate</span>
+        </a>
         <div className="scan-nav-actions">
-          <a href="/history">History</a>
+          <a href="/dashboard">Dashboard</a>
           <a href="/">Home</a>
         </div>
       </nav>
@@ -310,7 +313,7 @@ export default function ScanPage() {
             </p>
 
             <div className="scan-result-actions">
-              {!result.isDemo && <a href="/history" className="btn-history">Lihat History</a>}
+              {!result.isDemo && <a href="/dashboard" className="btn-history">Lihat Dashboard</a>}
               <button type="button" onClick={resetScan} className="btn-reset">Scan Ulang</button>
             </div>
           </section>
