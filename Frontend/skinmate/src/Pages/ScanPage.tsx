@@ -1,6 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
 import '../style/ScanPage.css';
 import logoImg from '../assets/logo.png';
+import { getUser } from '../auth';
+
+function getInitials(name: string) {
+  return name.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2);
+}
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -107,6 +112,11 @@ export default function ScanPage() {
   const [analyzing, setAnalyzing] = useState(false);
   const [result, setResult] = useState<ScanHistoryItem | null>(null);
   const [error, setError] = useState('');
+  const [user, setCurrentUser] = useState<{ username: string } | null>(null);
+
+  useEffect(() => {
+    setCurrentUser(getUser());
+  }, []);
 
   function stopCamera() {
     if (streamRef.current) { streamRef.current.getTracks().forEach(t => t.stop()); streamRef.current = null; }
@@ -204,13 +214,16 @@ export default function ScanPage() {
   return (
     <div className="scan-page">
       <nav className="scan-nav">
-        <a className="scan-logo" href="/">
+        <a className="scan-logo" href={user ? "/home" : "/"}>
           <img src={logoImg} alt="Logo" width="22" height="29" style={{ marginRight: '5px' }} />
           Skin<span>Mate</span>
         </a>
         <div className="scan-nav-actions">
+          <a className="active" href="/scan">Scan</a>
           <a href="/dashboard">Dashboard</a>
-          <a href="/">Home</a>
+          <a href="/profile" className="scan-nav-avatar" title="Profile">
+            <span className="scan-avatar-circle">{user ? getInitials(user.username) : '👤'}</span>
+          </a>
         </div>
       </nav>
 
