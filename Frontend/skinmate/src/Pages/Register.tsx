@@ -4,20 +4,30 @@ import logoImg from "../assets/logo.png"
 import BackgroundImg from "../assets/LogoBackgroundImg.png";
 import GoogleLogo from "../assets/GoogleLogo.png";
 import FacebookLogo from "../assets/FacebookLogo.png"
+import { setUser } from "../auth";
 
 const Register: React.FC = () => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const [username, setUsername] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const [error, setError] = useState<string>("");
 
   const togglePassword = (): void => {
     setShowPassword((prev) => !prev);
   };
 
   const handleSubmit = (): void => {
-    // Handle account creation logic here
-    console.log("Creating account with:", { username, email, password });
+    if (!username.trim() || !email.trim() || !password.trim()) {
+      setError("Semua field wajib diisi.");
+      return;
+    }
+    if (password.length < 6) {
+      setError("Password minimal 6 karakter.");
+      return;
+    }
+    setUser({ username: username.trim(), email: email.trim(), joinedAt: new Date().toISOString() });
+    window.location.href = "/home";
   };
 
   const EyeOffIcon: React.FC = () => (
@@ -142,6 +152,8 @@ const Register: React.FC = () => {
           <button className="btn-create" type="button" onClick={handleSubmit}>
             Create Account
           </button>
+
+          {error && <p style={{ color: '#dc2626', fontSize: '0.85rem', textAlign: 'center', margin: '4px 0 0' }}>{error}</p>}
 
           <div className="bottom-links">
             Already have an account? <a href="/auth/login">Log in</a>
