@@ -1,9 +1,22 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import '../style/Landing.css'
 import logo from '../assets/logo.png'
 import githubLogo from '../assets/github_logo.png';
+import { getUser } from '../auth';
 
-export function Landing() {
+function getInitials(name: string) {
+  return name.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2);
+}
+
+export function Landing({ loggedIn: forcedLoggedIn }: { loggedIn?: boolean } = {}) {
+  const [user, setUser] = useState<{ username: string } | null>(null);
+
+  useEffect(() => {
+    const u = getUser();
+    setUser(u);
+  }, []);
+
+  const isLoggedIn = forcedLoggedIn || !!user;
 
 
   return (
@@ -20,10 +33,22 @@ export function Landing() {
           <li><a href="#skin-types">Skin Type</a></li>
           <li><a href="#acne-types">Acne Type</a></li>
         </ul>
-        <div className="nav-cta">
-          <a href="/auth/register" className="btn-ghost">Register</a>
-          <a href="/auth/register" className="btn-solid">Scan Now</a>
-        </div>
+        {isLoggedIn ? (
+          <div className="nav-cta">
+            <a href="/scan" className="btn-ghost">Scan</a>
+            <a href="/dashboard" className="btn-ghost">Dashboard</a>
+            <a href="/profile" className="nav-avatar-btn" title="Profile">
+              <span className="nav-avatar-circle-land">
+                {user ? getInitials(user.username) : '👤'}
+              </span>
+            </a>
+          </div>
+        ) : (
+          <div className="nav-cta">
+            <a href="/auth/login" className="btn-ghost">Login</a>
+            <a href="/auth/register" className="btn-solid">Register</a>
+          </div>
+        )}
       </nav>
 
       {/* HERO */}
