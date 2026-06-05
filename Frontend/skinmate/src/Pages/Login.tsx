@@ -4,21 +4,28 @@ import logoImg from "/src/assets/logo.png";
 import BackgroundImg from "../assets/LogoBackgroundImg.png";
 import GoogleLogo from "../assets/GoogleLogo.png";
 import FacebookLogo from "../assets/FacebookLogo.png";
+import { setUser, getUser } from "../auth";
 
 const Login: React.FC = () => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const [error, setError] = useState<string>("");
 
   const togglePassword = (): void => {
     setShowPassword((prev) => !prev);
   };
 
   const handleSubmit = (): void => {
-    // Handle login logic here
-    console.log("Logging in with:", { email, password });
-    // After successful login, redirect to scan page
-    window.location.href = "/scan";
+    if (!email.trim() || !password.trim()) {
+      setError("Email dan password wajib diisi.");
+      return;
+    }
+    // Derive username from email (part before @) if not stored
+    const storedUser = getUser();
+    const username = storedUser?.username || email.split("@")[0];
+    setUser({ username, email: email.trim(), joinedAt: storedUser?.joinedAt || new Date().toISOString() });
+    window.location.href = "/home";
   };
 
   const EyeOffIcon: React.FC = () => (
@@ -139,6 +146,8 @@ const Login: React.FC = () => {
           <button className="login-btn-submit" type="button" onClick={handleSubmit}>
             Log In
           </button>
+
+          {error && <p style={{ color: '#dc2626', fontSize: '0.85rem', textAlign: 'center', margin: '4px 0 0' }}>{error}</p>}
 
           <div className="login-bottom-links">
             Don't have an account? <a href="/auth/register">Register</a>
