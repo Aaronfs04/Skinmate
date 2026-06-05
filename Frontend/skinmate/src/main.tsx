@@ -7,6 +7,8 @@ import HistoryPage from './Pages/HistoryPage'
 import DashboardPage from './Pages/DashboardPage'
 import Register from './Pages/Register'
 import Login from './Pages/Login'
+import ProfilePage from './Pages/ProfilePage'
+import { Landing } from './Pages/Landing'
 
 // ─── Global SPA Navigation ──────────────────────────────────────────────────
 // Expose a global navigateTo so any component (including non-React code) can
@@ -30,6 +32,8 @@ function resolveRoute(path: string): React.ReactNode {
   if (path === '/dashboard' || path === '/app/dashboard') return <DashboardPage />
   if (path === '/auth/register' || path === '/app/auth/register') return <Register />
   if (path === '/auth/login' || path === '/app/auth/login') return <Login />
+  if (path === '/profile' || path === '/app/profile') return <ProfilePage />
+  if (path === '/home' || path === '/app/home') return <Landing loggedIn />
   return <HeroPage />
 }
 
