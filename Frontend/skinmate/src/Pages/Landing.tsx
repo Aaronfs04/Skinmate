@@ -38,7 +38,7 @@ export function Landing({ loggedIn: forcedLoggedIn }: { loggedIn?: boolean } = {
             <a href="/scan" className="btn-ghost">Scan</a>
             <a href="/dashboard" className="btn-ghost">Dashboard</a>
             <a href="/profile" className="nav-avatar-btn" title="Profile">
-              <span className="nav-avatar-circle-land">
+              <span className="nav-avatar-circle">
                 {user ? getInitials(user.username) : '👤'}
               </span>
             </a>
@@ -68,7 +68,7 @@ export function Landing({ loggedIn: forcedLoggedIn }: { loggedIn?: boolean } = {
             Upload a face photo and get an instant analysis of your skin type and acne condition using AI
           </p>
           <div className="hero-actions">
-            <a href="/auth/register" className="btn-hero">Scan Your Skin Now →</a>
+            <a href={isLoggedIn ? "/scan" : "/auth/register"} className="btn-hero">Scan Your Skin Now →</a>
             <a href="#how" className="btn-hero-outline">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <circle cx="12" cy="12" r="10" />
@@ -231,7 +231,7 @@ export function Landing({ loggedIn: forcedLoggedIn }: { loggedIn?: boolean } = {
           Toward <em>Healthier Skin</em>?
         </h2>
         <p>Scan your face now and get your personalized AI skin analysis</p>
-        <a href="/auth/register" className="btn-cta">Scan Your Skin Now</a>
+        <a href={isLoggedIn ? "/scan" : "/auth/register"} className="btn-cta">Scan Your Skin Now</a>
       </section>
 
       {/* FOOTER */}

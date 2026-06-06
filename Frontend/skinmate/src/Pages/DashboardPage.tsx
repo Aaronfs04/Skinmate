@@ -63,9 +63,9 @@ function timeAgo(value: string) {
 
 const CONDITION_COLOR: Record<string, { bg: string; fg: string; dot: string }> =
 {
-  Baik: { bg: '#f0fdf4', fg: '#16a34a', dot: '#22c55e' },
-  Cukup: { bg: '#fffbeb', fg: '#b45309', dot: '#f59e0b' },
-  'Perlu Perhatian': { bg: '#fef2f2', fg: '#dc2626', dot: '#ef4444' },
+  Good: { bg: '#f0fdf4', fg: '#16a34a', dot: '#22c55e' },
+  Fair: { bg: '#fffbeb', fg: '#b45309', dot: '#f59e0b' },
+  'Needs Attention': { bg: '#fef2f2', fg: '#dc2626', dot: '#ef4444' },
 };
 
 
@@ -192,10 +192,11 @@ export default function DashboardPage() {
           <a href="/dashboard" className="active">
             Dashboard
           </a>
-          <a href="/profile" className="db-nav-avatar" title="Profile">
-            <span className="nav-avatar-circle">{user ? getInitials(user.username) : '👤'}</span>
-          </a>
+          <a href="/history">History</a>
         </div>
+        <a href="/profile" className="db-nav-avatar" title="Profile">
+          <span className="nav-avatar-circle">{user ? getInitials(user.username) : '👤'}</span>
+        </a>
       </nav>
 
       <main className="db-main">
@@ -231,9 +232,9 @@ export default function DashboardPage() {
                 /* ── Empty state ── */
                 <div className="db-empty">
                   <span>📊</span>
-                  <h2>Belum Ada Data</h2>
-                  <p>Lakukan scan pertama untuk melihat dashboard analisis kulitmu.</p>
-                  <a href="/scan" className="db-empty-cta">Mulai Scan</a>
+                  <h2>No Data Yet</h2>
+                  <p>Do your first scan to see your skin analysis dashboard.</p>
+                  <a href="/scan" className="db-empty-cta">Start Scan</a>
                 </div>
               ) : (
                 <>

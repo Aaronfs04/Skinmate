@@ -29,10 +29,10 @@ type ScanHistoryItem = {
 const STORAGE_KEY = 'skinmate_scan_history';
 
 const CONDITION_COLOR: Record<string, string> = {
-  Baik: '#22c55e',
-  Cukup: '#f59e0b',
-  'Perlu Perhatian': '#ef4444',
-  'AI Tidak Ditemukan': '#94a3b8',
+  Good: '#22c55e',
+  Fair: '#f59e0b',
+  'Needs Attention': '#ef4444',
+  'AI Not Found': '#94a3b8',
 };
 
 function loadHistory(): ScanHistoryItem[] {
@@ -74,7 +74,7 @@ function DetailPage({
       {/* Nav */}
       <nav className="detail-nav">
         <button type="button" className="detail-back-btn" onClick={onBack}>
-          ← Kembali ke History
+          ← Back to History
         </button>
         <div className="detail-nav-date">{formatDate(item.date)}</div>
       </nav>
@@ -83,9 +83,9 @@ function DetailPage({
         {/* Demo Banner */}
         {item.isDemo && (
           <div className="detail-demo-banner">
-            <span className="detail-demo-tag">Data Demo</span>
-            Ini adalah data contoh. Hubungkan AI untuk hasil analisis
-            sesungguhnya.
+            <span className="detail-demo-tag">Demo Data</span>
+            This is sample data. Connect AI for actual analysis
+            results.
           </div>
         )}
 
@@ -108,11 +108,11 @@ function DetailPage({
             </div>
             {!item.isDemo ? (
               <p className="detail-accuracy-label">
-                🎯 Akurasi rata-rata: <strong>{item.confidence}%</strong>
+                🎯 Average accuracy: <strong>{item.confidence}%</strong>
               </p>
             ) : (
               <p className="detail-accuracy-label detail-demo-acc">
-                ✨ Data contoh
+                ✨ Sample data
               </p>
             )}
           </div>
@@ -122,13 +122,13 @@ function DetailPage({
             <div className="detail-cards-stacked">
               <div className="detail-card skin-card">
                 <div className="dc-icon">🌿</div>
-                <div className="dc-label">Tipe Kulit</div>
+                <div className="dc-label">Skin Type</div>
                 <div className="dc-value">{item.skinType}</div>
                 <p className="dc-desc">{item.skinTypeDesc}</p>
               </div>
               <div className="detail-card acne-card">
                 <div className="dc-icon">🔍</div>
-                <div className="dc-label">Kondisi Jerawat</div>
+                <div className="dc-label">Acne Condition</div>
                 <div className="dc-value">{item.acneType}</div>
                 <p className="dc-desc">{item.acneTypeDesc}</p>
               </div>
@@ -139,7 +139,7 @@ function DetailPage({
         {/* ── Tips (bawah) ─────────────────────────────────────────────────── */}
         {item.skincareTips?.length > 0 && (
           <div className="detail-tips">
-            <h3>💡 Tips Skincare untuk Kamu</h3>
+            <h3>💡 Skincare Tips for You</h3>
             <ul className="detail-tips-list">
               {item.skincareTips.map((tip, i) => (
                 <li key={i}>
@@ -152,8 +152,8 @@ function DetailPage({
         )}
 
         <p className="detail-disclaimer">
-          ⚕️ Hasil ini hanya estimasi{item.isDemo ? ' contoh' : ' AI'}, bukan
-          diagnosis medis. Konsultasikan ke dokter kulit untuk diagnosis akurat.
+          ⚕️ This result is only an{item.isDemo ? ' example' : ' AI'} estimation, not
+          a medical diagnosis. Consult a dermatologist for an accurate diagnosis.
         </p>
 
         {/* Actions */}
@@ -166,10 +166,10 @@ function DetailPage({
               onBack();
             }}
           >
-            {isSelected ? '✓ Dipilih untuk Compare' : 'Pilih untuk Compare'}
+            {isSelected ? '✓ Selected for Compare' : 'Select for Compare'}
           </button>
           <button type="button" className="btn-back-action" onClick={onBack}>
-            Kembali
+            Back
           </button>
         </div>
       </main>
@@ -204,7 +204,7 @@ export default function HistoryPage() {
       if (current.includes(id))
         return current.filter((itemId) => itemId !== id);
       if (current.length >= 2) {
-        alert('Maksimal pilih 2 scan untuk dibandingkan.');
+        alert('Maximum 2 scans selected for comparison.');
         return current;
       }
       return [...current, id];
@@ -212,7 +212,7 @@ export default function HistoryPage() {
   }
 
   function clearHistory() {
-    const ok = confirm('Yakin mau hapus semua history scan?');
+    const ok = confirm('Are you sure you want to delete all scan history?');
     if (!ok) return;
     localStorage.removeItem(STORAGE_KEY);
     setHistory([]);
@@ -248,26 +248,27 @@ export default function HistoryPage() {
         <div className="history-nav-actions">
           <a href="/scan">Scan</a>
           <a href="/dashboard">Dashboard</a>
-          <a href="/profile" className="history-nav-avatar" title="Profile">
-            <span className="history-avatar-circle">
-              {user ? getInitials(user.username) : '👤'}
-            </span>
-          </a>
+          <a href="/history" className="active">History</a>
         </div>
+        <a href="/profile" className="history-nav-avatar" title="Profile">
+          <span className="history-avatar-circle">
+            {user ? getInitials(user.username) : '👤'}
+          </span>
+        </a>
       </nav>
 
       <main className="history-shell">
         <header className="history-header">
           <div>
-            <p>History Scan</p>
-            <h1>Pantau progres kulitmu</h1>
+            <p>Scan History</p>
+            <h1>Monitor your skin progress</h1>
             <span>
-              Klik kartu untuk lihat detail. Pilih dua kartu untuk compare.
+              Click a card to see details. Select two cards to compare.
             </span>
           </div>
           {history.length > 0 && (
             <button type="button" onClick={clearHistory}>
-              Hapus History
+              Clear History
             </button>
           )}
         </header>
@@ -279,7 +280,7 @@ export default function HistoryPage() {
             <div className="compare-grid">
               {selectedItems.map((item) => (
                 <article key={item.id}>
-                  <img src={item.image} alt="Hasil scan terpilih" />
+                  <img src={item.image} alt="Selected scan result" />
                   <h3>{item.skinType}</h3>
                   <p>{item.acneType}</p>
                   <div
@@ -296,9 +297,8 @@ export default function HistoryPage() {
               ))}
             </div>
             <p className="compare-note">
-              Insight: cek perbedaan tanggal, tipe kulit, dan kondisi jerawat.
-              Untuk hasil tracking yang rapi, scan dengan sudut dan cahaya yang
-              sama.
+              Insight: check differences in date, skin type, and acne condition.
+              For neat tracking results, scan with the same angle and lighting.
             </p>
           </section>
         )}
@@ -307,9 +307,9 @@ export default function HistoryPage() {
         {history.length === 0 ? (
           <section className="history-empty">
             <strong>📸</strong>
-            <h2>Belum ada history</h2>
-            <p>Setelah scan, hasilnya otomatis tersimpan di halaman ini.</p>
-            <a href="/scan">Mulai Scan</a>
+            <h2>No history yet</h2>
+            <p>After scanning, the results are automatically saved on this page.</p>
+            <a href="/scan">Start Scan</a>
           </section>
         ) : (
           <section className="history-grid">
@@ -346,7 +346,7 @@ export default function HistoryPage() {
                         toggleSelect(item.id);
                       }}
                     >
-                      {active ? '✓ Dipilih' : 'Pilih Compare'}
+                      {active ? '✓ Selected' : 'Select Compare'}
                     </button>
                   </div>
                 </article>

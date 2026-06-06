@@ -60,7 +60,7 @@ export default function ProfilePage() {
   }, []);
 
   function handleLogout() {
-    const ok = confirm('Yakin mau logout?');
+    const ok = confirm('Are you sure you want to logout?');
     if (!ok) return;
     clearUser();
     window.location.href = '/';
@@ -77,7 +77,7 @@ export default function ProfilePage() {
   }
 
   function handleClearHistory() {
-    const ok = confirm('Hapus semua history scan?');
+    const ok = confirm('Clear all scan history?');
     if (!ok) return;
     localStorage.removeItem(STORAGE_KEY);
     setHistory([]);
@@ -113,10 +113,11 @@ export default function ProfilePage() {
         <div className="profile-nav-links">
           <a href="/scan">Scan</a>
           <a href="/dashboard">Dashboard</a>
-          <a href="/profile" className="active profile-nav-avatar" title="Profile">
-            <span className="nav-avatar-circle">{user ? getInitials(user.username) : '?'}</span>
-          </a>
+          <a href="/history">History</a>
         </div>
+        <a href="/profile" className="active profile-nav-avatar" title="Profile">
+          <span className="nav-avatar-circle">{user ? getInitials(user.username) : '?'}</span>
+        </a>
       </nav>
 
       <main className="profile-main">
@@ -135,20 +136,20 @@ export default function ProfilePage() {
                   onKeyDown={(e) => e.key === 'Enter' && handleSaveName()}
                   autoFocus
                 />
-                <button className="profile-btn-save" onClick={handleSaveName}>Simpan</button>
-                <button className="profile-btn-cancel" onClick={() => setEditing(false)}>Batal</button>
+                <button className="profile-btn-save" onClick={handleSaveName}>Save</button>
+                <button className="profile-btn-cancel" onClick={() => setEditing(false)}>Cancel</button>
               </div>
             ) : (
               <div className="profile-name-row">
                 <h1>{user?.username}</h1>
-                <button className="profile-btn-edit" onClick={() => setEditing(true)} title="Edit nama">
+                <button className="profile-btn-edit" onClick={() => setEditing(true)} title="Edit name">
                   ✏️
                 </button>
               </div>
             )}
             <p className="profile-email">{user?.email}</p>
             <p className="profile-joined">
-              Bergabung sejak {user ? formatDate(user.joinedAt) : '-'}
+              Joined since {user ? formatDate(user.joinedAt) : '-'}
             </p>
           </div>
           <button className="profile-btn-logout" onClick={handleLogout}>
@@ -166,12 +167,12 @@ export default function ProfilePage() {
           <div className="profile-stat-card">
             <span className="pstat-icon">🎯</span>
             <div className="pstat-num">{avgConf}%</div>
-            <div className="pstat-label">Rata-rata Akurasi</div>
+            <div className="pstat-label">Average Accuracy</div>
           </div>
           <div className="profile-stat-card">
             <span className="pstat-icon">🌿</span>
             <div className="pstat-num">{topSkin?.[0] ?? '-'}</div>
-            <div className="pstat-label">Tipe Kulit Dominan</div>
+            <div className="pstat-label">Dominant Skin Type</div>
           </div>
         </div>
 
@@ -179,18 +180,18 @@ export default function ProfilePage() {
         {totalScans > 0 && (
           <div className="profile-section-card">
             <div className="profile-section-header">
-              <h2>Riwayat Kondisi Kulit</h2>
+              <h2>Skin Condition History</h2>
               <button className="profile-btn-clear" onClick={handleClearHistory}>
-                Hapus History
+                Clear History
               </button>
             </div>
             <div className="profile-cond-list">
               {Object.entries(conditionCounts).map(([cond, count]) => {
                 const pct = Math.round((count / totalScans) * 100);
                 const COLOR: Record<string, string> = {
-                  Baik: '#22c55e',
-                  Cukup: '#f59e0b',
-                  'Perlu Perhatian': '#ef4444',
+                  Good: '#22c55e',
+                  Fair: '#f59e0b',
+                  'Needs Attention': '#ef4444',
                 };
                 const color = COLOR[cond] ?? '#918b6b';
                 return (
@@ -211,7 +212,7 @@ export default function ProfilePage() {
         {/* ── Skin Type Breakdown ── */}
         {totalScans > 0 && (
           <div className="profile-section-card">
-            <h2>Distribusi Tipe Kulit</h2>
+            <h2>Skin Type Distribution</h2>
             <div className="profile-skintype-grid">
               {Object.entries(skinTypeCounts).map(([type, count]) => (
                 <div key={type} className="profile-skintype-chip">
@@ -227,9 +228,9 @@ export default function ProfilePage() {
         {totalScans === 0 && (
           <div className="profile-empty">
             <span>📊</span>
-            <h3>Belum ada data scan</h3>
-            <p>Mulai scan untuk melihat statistik kulitmu di sini.</p>
-            <a href="/scan" className="profile-cta">Mulai Scan</a>
+            <h3>No scan data yet</h3>
+            <p>Start a scan to see your skin statistics here.</p>
+            <a href="/scan" className="profile-cta">Start Scan</a>
           </div>
         )}
       </main>

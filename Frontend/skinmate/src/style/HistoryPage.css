@@ -36,9 +36,14 @@
 .history-logo span {
   color: #918b6b;
 }
+.history-logo {
+  flex: 1;
+}
 .history-nav-actions {
   display: flex;
-  gap: 10px;
+  gap: 120px;
+  align-items: center;
+  justify-content: center;
 }
 .history-nav-actions a {
   padding: 9px 18px;
@@ -62,6 +67,10 @@
   padding: 0 !important;
   border: none !important;
   background: transparent !important;
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  text-decoration: none;
 }
 .history-nav-avatar:hover .history-avatar-circle {
   background: #2b2b1f;

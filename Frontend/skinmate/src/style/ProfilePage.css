@@ -40,10 +40,14 @@
 .profile-nav-logo span {
   color: #918b6b;
 }
+.profile-nav-logo {
+  flex: 1;
+}
 .profile-nav-links {
   display: flex;
-  gap: 10px;
+  gap: 120px;
   align-items: center;
+  justify-content: center;
 }
 .profile-nav-links a {
   padding: 9px 18px;
@@ -64,6 +68,10 @@
   padding: 0 !important;
   border: none !important;
   background: transparent !important;
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  text-decoration: none;
 }
 .profile-nav-avatar:hover .nav-avatar-circle {
   background: #2b2b1f;

@@ -45,47 +45,47 @@ const DUMMY_RESULTS: Omit<
   'id' | 'image' | 'date' | 'isDemo'
 >[] = [
   {
-    skinType: 'Berminyak',
+    skinType: 'Oily',
     skinTypeDesc:
-      'Kulit terlihat mengkilap terutama di area T-zone. Produksi sebum cenderung tinggi sepanjang hari.',
-    acneType: 'Jerawat Ringan',
+      'Skin looks shiny, especially in the T-zone area. Sebum production tends to be high throughout the day.',
+    acneType: 'Mild Acne',
     acneTypeDesc:
-      'Terdapat beberapa papul kecil yang meradang, terutama di area dagu dan hidung. Jumlah lesi masih di bawah 20.',
-    overallCondition: 'Cukup',
+      'There are several inflamed small papules, especially in the chin and nose areas. The number of lesions is still below 20.',
+    overallCondition: 'Fair',
     skincareTips: [
-      'Gunakan pembersih wajah dengan kandungan salicylic acid 0.5–2% untuk mengontrol minyak berlebih.',
-      'Pakai moisturizer berbasis gel yang non-comedogenic agar kulit tetap lembap tanpa menyumbat pori.',
-      'Hindari menyentuh wajah terlalu sering dan ganti sarung bantal minimal 2x seminggu.',
+      'Use a facial cleanser with 0.5–2% salicylic acid to control excess oil.',
+      'Use a non-comedogenic gel-based moisturizer to keep the skin hydrated without clogging pores.',
+      'Avoid touching your face too often and change pillowcases at least 2x a week.',
     ],
     confidence: 78,
   },
   {
-    skinType: 'Kombinasi',
+    skinType: 'Combination',
     skinTypeDesc:
-      'Area T-zone (dahi, hidung, dagu) lebih berminyak sementara pipi cenderung normal hingga kering.',
-    acneType: 'Komedo',
+      'The T-zone area (forehead, nose, chin) is oilier while the cheeks tend to be normal to dry.',
+    acneType: 'Comedones',
     acneTypeDesc:
-      'Terdapat blackhead dan whitehead di area hidung dan dahi. Belum ada peradangan yang signifikan.',
-    overallCondition: 'Baik',
+      'There are blackheads and whiteheads in the nose and forehead areas. There is no significant inflammation yet.',
+    overallCondition: 'Good',
     skincareTips: [
-      'Gunakan toner dengan kandungan niacinamide untuk menyeimbangkan produksi minyak di T-zone.',
-      'Aplikasikan clay mask 1–2x seminggu khusus di area berminyak untuk membersihkan pori.',
-      'Pilih sunscreen berbentuk lotion ringan agar tidak memperparah area kering.',
+      'Use a toner with niacinamide to balance oil production in the T-zone.',
+      'Apply a clay mask 1–2x a week specifically on oily areas to clean pores.',
+      'Choose a light lotion sunscreen so as not to worsen dry areas.',
     ],
     confidence: 82,
   },
   {
     skinType: 'Normal',
     skinTypeDesc:
-      'Kulit terlihat seimbang, tidak terlalu berminyak maupun kering. Pori-pori tampak minimal.',
-    acneType: 'Tidak Ada Jerawat',
+      'Skin looks balanced, neither too oily nor dry. Pores are minimally visible.',
+    acneType: 'No Acne',
     acneTypeDesc:
-      'Kulit bersih tanpa tanda-tanda peradangan atau sumbatan pori yang terlihat. Kondisi baik.',
-    overallCondition: 'Baik',
+      'Clear skin without visible signs of inflammation or clogged pores. Good condition.',
+    overallCondition: 'Good',
     skincareTips: [
-      'Pertahankan rutinitas skincare yang sederhana: cleanser, moisturizer, dan sunscreen setiap hari.',
-      'Lakukan eksfoliasi ringan 1x seminggu untuk menjaga kulit tetap cerah dan segar.',
-      'Konsumsi air mineral minimal 8 gelas sehari untuk menjaga hidrasi kulit dari dalam.',
+      'Maintain a simple skincare routine: cleanser, moisturizer, and sunscreen every day.',
+      'Do light exfoliation 1x a week to keep the skin bright and fresh.',
+      'Drink at least 8 glasses of mineral water a day to maintain skin hydration from within.',
     ],
     confidence: 85,
   },
@@ -113,10 +113,10 @@ function saveToHistory(item: ScanHistoryItem) {
 }
 
 const CONDITION_COLOR: Record<string, string> = {
-  Baik: '#22c55e',
-  Cukup: '#f59e0b',
-  'Perlu Perhatian': '#ef4444',
-  'AI Tidak Ditemukan': '#94a3b8',
+  Good: '#22c55e',
+  Fair: '#f59e0b',
+  'Needs Attention': '#ef4444',
+  'AI Not Found': '#94a3b8',
 };
 
 // ─── Component ────────────────────────────────────────────────────────────────
@@ -145,7 +145,7 @@ export default function ScanPage() {
 
   async function openCamera() {
     if (!navigator.mediaDevices?.getUserMedia) {
-      alert('Browser belum mendukung kamera. Gunakan upload foto.');
+      alert('Browser does not support camera. Use photo upload.');
       return;
     }
     try {
@@ -165,7 +165,7 @@ export default function ScanPage() {
       }
     } catch {
       alert(
-        'Kamera gagal dibuka. Pastikan izin aktif dan buka via localhost/HTTPS.',
+        'Failed to open camera. Make sure permission is active and open via localhost/HTTPS.',
       );
     }
   }
@@ -200,7 +200,7 @@ export default function ScanPage() {
   async function analyzeNow() {
     const selectedImage = image || captureFromCamera();
     if (!selectedImage) {
-      alert('Buka kamera lalu ambil foto, atau upload foto dulu.');
+      alert('Open camera and take a photo, or upload a photo first.');
       return;
     }
     setAnalyzing(true);
@@ -267,7 +267,7 @@ export default function ScanPage() {
         isDemo: true,
       };
       setResult(item);
-      setError('Backend tidak dapat dijangkau — menampilkan data contoh.');
+      setError('Backend unreachable — showing sample data.');
     } finally {
       setAnalyzing(false);
     }
@@ -299,27 +299,28 @@ export default function ScanPage() {
             Scan
           </a>
           <a href="/dashboard">Dashboard</a>
-          <a href="/profile" className="scan-nav-avatar" title="Profile">
-            <span className="scan-avatar-circle">
-              {user ? getInitials(user.username) : '👤'}
-            </span>
-          </a>
+          <a href="/history">History</a>
         </div>
+        <a href="/profile" className="scan-nav-avatar" title="Profile">
+          <span className="scan-avatar-circle">
+            {user ? getInitials(user.username) : '👤'}
+          </span>
+        </a>
       </nav>
 
       {analyzing && (
         <div className="scan-loading">
           <div className="scan-spinner" />
-          <h2>Menganalisis foto...</h2>
-          <p>AI sedang mendeteksi tipe kulit dan kondisi jerawatmu.</p>
+          <h2>Analyzing photo...</h2>
+          <p>AI is detecting your skin type and acne condition.</p>
         </div>
       )}
 
       <main className="scan-shell">
         <header className="scan-header">
-          <p>Scan Kulit</p>
-          <h1>Deteksi Tipe Kulit & Jerawat</h1>
-          <span>Buka kamera atau upload foto wajahmu untuk analisis AI</span>
+          <p>Skin Scan</p>
+          <h1>Detect Skin Type & Acne</h1>
+          <span>Open camera or upload your face photo for AI analysis</span>
         </header>
 
         {/* ─── Input Card ─────────────────────────────────────────────────── */}
@@ -337,24 +338,24 @@ export default function ScanPage() {
               {!cameraOpen && !image && (
                 <div className="scan-empty">
                   <strong>📷</strong>
-                  <p>Kamera/foto akan tampil di sini</p>
+                  <p>Camera/photo will appear here</p>
                 </div>
               )}
               {(cameraOpen || image) && <div className="face-guide" />}
             </div>
             <div className="scan-controls">
               <button type="button" onClick={openCamera}>
-                Buka Kamera
+                Open Camera
               </button>
               <button
                 type="button"
                 onClick={captureFromCamera}
                 disabled={!cameraOpen}
               >
-                Ambil Foto
+                Take Photo
               </button>
               <label>
-                Upload Foto
+                Upload Photo
                 <input
                   type="file"
                   accept="image/*"
@@ -367,7 +368,7 @@ export default function ScanPage() {
                 onClick={analyzeNow}
                 disabled={analyzing}
               >
-                {analyzing ? 'Menganalisis...' : 'Analisis Sekarang'}
+                {analyzing ? 'Analyzing...' : 'Analyze Now'}
               </button>
             </div>
           </section>
@@ -380,12 +381,12 @@ export default function ScanPage() {
           <section className="scan-result-full">
             {result.isDemo && (
               <div className="result-note">
-                <span className="note-badge">Catatan 1</span>
+                <span className="note-badge">Note 1</span>
                 <div>
-                  <strong>AI belum terhubung</strong> — Hasil di bawah adalah
-                  data contoh untuk tampilan. Hubungkan model AI di{' '}
-                  <code>Backend/.env</code> untuk analisis foto yang
-                  sesungguhnya.
+                  <strong>AI not connected</strong> — Results below are
+                  sample data for display. Connect the AI model in{' '}
+                  <code>Backend/.env</code> for actual photo
+                  analysis.
                 </div>
               </div>
             )}
@@ -397,7 +398,7 @@ export default function ScanPage() {
                 <div className="result-image-wrap">
                   <img
                     src={result.image}
-                    alt="Hasil scan"
+                    alt="Scan result"
                     className="result-big-photo"
                   />
                   {/* Kondisi badge overlay */}
@@ -414,12 +415,12 @@ export default function ScanPage() {
                 </div>
                 {!result.isDemo && (
                   <p className="result-accuracy-label">
-                    🎯 Akurasi rata-rata: <strong>{result.confidence}%</strong>
+                    🎯 Average accuracy: <strong>{result.confidence}%</strong>
                   </p>
                 )}
                 {result.isDemo && (
                   <p className="result-accuracy-label result-demo-label">
-                    ✨ Data contoh
+                    ✨ Sample data
                   </p>
                 )}
               </div>
@@ -429,13 +430,13 @@ export default function ScanPage() {
                 <div className="result-cards-stacked">
                   <div className="result-card skin-type-card">
                     <div className="rc-icon">🌿</div>
-                    <div className="rc-label">Tipe Kulit</div>
+                    <div className="rc-label">Skin Type</div>
                     <div className="rc-value">{result.skinType}</div>
                     <p className="rc-desc">{result.skinTypeDesc}</p>
                   </div>
                   <div className="result-card acne-type-card">
                     <div className="rc-icon">🔍</div>
-                    <div className="rc-label">Kondisi Jerawat</div>
+                    <div className="rc-label">Acne Condition</div>
                     <div className="rc-value">{result.acneType}</div>
                     <p className="rc-desc">{result.acneTypeDesc}</p>
                   </div>
@@ -445,7 +446,7 @@ export default function ScanPage() {
 
             {/* ── Bawah — Tips Skincare ─────────────────────────────────────── */}
             <div className="result-tips">
-              <h3>💡 Tips Skincare untuk Kamu</h3>
+              <h3>💡 Skincare Tips for You</h3>
               <ul className="result-tips-list">
                 {result.skincareTips.map((tip, i) => (
                   <li key={i}>
@@ -457,19 +458,19 @@ export default function ScanPage() {
             </div>
 
             <p className="result-disclaimer">
-              ⚕️ Hasil ini hanya estimasi{result.isDemo ? ' contoh' : ' AI'},
-              bukan diagnosis medis. Konsultasikan ke dokter kulit untuk
-              diagnosis akurat.
+              ⚕️ This result is only an{result.isDemo ? ' example' : ' AI'} estimation,
+              not a medical diagnosis. Consult a dermatologist for
+              an accurate diagnosis.
             </p>
 
             <div className="scan-result-actions">
               {!result.isDemo && (
                 <a href="/dashboard" className="btn-history">
-                  Lihat Dashboard
+                  View Dashboard
                 </a>
               )}
               <button type="button" onClick={resetScan} className="btn-reset">
-                Scan Ulang
+                Rescan
               </button>
             </div>
           </section>

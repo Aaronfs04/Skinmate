@@ -166,6 +166,33 @@ nav {
   transform: translateY(-1px);
 }
 
+/* ── NAV AVATAR CIRCLE (logged-in state) ── */
+.nav-avatar-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  background: var(--warm-earth);
+  color: var(--white);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  border: 2px solid var(--white);
+  box-shadow: 0 0 0 2px var(--border);
+  flex-shrink: 0;
+  cursor: default;
+  transition:
+    background 0.15s,
+    box-shadow 0.15s;
+}
+
+.nav-avatar-circle:hover {
+  background: var(--olive-dark);
+  box-shadow: 0 0 0 2px var(--olive-dark);
+}
+
 /* ── HERO ── */
 .hero {
   min-height: 100vh;
