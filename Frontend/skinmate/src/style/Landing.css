@@ -21,7 +21,7 @@
 }
 
 html {
-  scroll-behavior: auto; /* diganti: custom JS smooth scroll yang handle ini */
+  scroll-behavior: smooth;
   scroll-padding-top: 100px;
   scrollbar-width: none; /* Firefox */
 }
